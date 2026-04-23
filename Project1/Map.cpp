@@ -61,4 +61,9 @@ void Map::draw(sf::RenderWindow& window)
 
 }
 
+const std::vector<sf::Vector2f>& Map::getWaypoints() const
+{
+        return waypoints;
+}
+
 
