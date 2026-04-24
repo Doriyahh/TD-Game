@@ -196,12 +196,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseEnemy.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseEnemy.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />
