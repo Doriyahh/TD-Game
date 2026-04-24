@@ -7,7 +7,7 @@ class Tower : public sf::RectangleShape
 public:
     Tower(const sf::Vector2f& pos, const float& Damage = 0.0, const float& AS = 0.0, const float& Range = 0.0) 
         : sf::RectangleShape(sf::Vector2f(50, 80))
-    {
+        {
         //not sure if this is how you want the constructor or not
 
         this->setPosition(pos);
@@ -17,7 +17,8 @@ public:
         this->mAS = AS;
 
         this->mRange = Range;
-    }
+        }
+    
 
 
     //setters
