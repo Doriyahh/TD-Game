@@ -21,6 +21,7 @@ void Enemy::damageTaken(float amount)
 bool Enemy::reachedEnd() const
 {
 	//gets the position of the enemy and chekcs to see if that position intersects with the ending waypoint
+	return false;
 }
 
 void Enemy::move(float time)
