@@ -4,15 +4,16 @@
 class Enemy : public sf::CircleShape
 {
 public:
-	Enemy(float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0) : sf::CircleShape(30)
-	{
+	Enemy(float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0) 
+		: sf::CircleShape(30)
+		{
+			this->mHealth = Health;
+			this->mDamage = Damage;
+			this->mMaxSpeed = MaxSpeed;
+			this->mCSpeed = CSpeed;
+			this->mGold = Gold;
+		}
 
-		this->mHealth = Health;
-		this->mDamage = Damage;
-		this->mMaxSpeed = MaxSpeed;
-		this->mCSpeed = CSpeed;
-		this->mGold = Gold;
-	}
 	virtual ~Enemy()
 	{
 		isDead();
@@ -104,4 +105,4 @@ protected:
 	float mStun; // for complete stop not slow
 
 	
-}
+};
