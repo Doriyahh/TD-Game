@@ -1,15 +1,5 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy(float Health, float Damage, float MaxSpeed, float CSpeed, float Gold)
-{
-
-	mHealth = Health;
-	mDamage = Damage;
-	mMaxSpeed = MaxSpeed;
-	mCSpeed = CSpeed;
-	mGold = Gold;
-}
-
 bool Enemy::isDead() const
 {
 	//returns true or false depending on whether the enemy is dead or not
