@@ -5,7 +5,7 @@
 class Enemy : public sf::CircleShape
 {
 public:
-	Enemy(float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0) 
+	Enemy(float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0)
 		: sf::CircleShape(30)
 		{
 			this->mHealth = Health;
@@ -13,6 +13,7 @@ public:
 			this->mMaxSpeed = MaxSpeed;
 			this->mCSpeed = CSpeed;
 			this->mGold = Gold;
+			
 		}
 
 	virtual ~Enemy()
@@ -20,6 +21,7 @@ public:
 		isDead();
 
 		//delete enemy here
+	
 	}
 	float getHealth()
 	{
@@ -96,14 +98,19 @@ public:
 
 protected:
 
-	virtual  void move(float time);
+	virtual  void move(float deltatime);
 	float  mHealth;
 	float  mDamage;
 	float mMaxSpeed;
 	float mCSpeed;//current speed
 	float mGold;// reward for killing enemy
 	float mArmor; // do we want flat rate or percentage
-	float mStun; // for complete stop not slow
+	float mStun; // complelety stops enemy
 
-	
+	bool dead = false;
+	bool reached =false;
+	bool stunned = false;
+
+
+
 };
