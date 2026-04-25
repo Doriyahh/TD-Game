@@ -9,15 +9,16 @@ Tower defense game built in MS Visual Studio Community using the SFML graphics l
 
 
 Current Contribution List:
-- Brock -
+
+Brock:
 - Created project files and repository
 
-- Brandon -
+Brandon:
 - Created map graphics and path systems
 - Contributed to enemy and tower map-based functions
 
-- Blake -
+Blake:
 - Created base tower class and base enemy class
 
-- Josh -
+Josh:
 - Contributed to enemy classes
