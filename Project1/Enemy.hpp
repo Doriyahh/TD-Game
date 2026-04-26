@@ -114,10 +114,11 @@ public:
 	virtual bool isDead() const;
 	virtual bool reachedEnd() const;
 	virtual void update(float deltatime);
+	virtual void move();
 
 protected:
 
-	virtual void move();
+	
 	float  mHealth;
 	float  mDamage;
 	float mMaxSpeed;

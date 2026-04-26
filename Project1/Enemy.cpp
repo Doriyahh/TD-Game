@@ -51,7 +51,3 @@ bool Enemy::reachedEnd() const
 void Enemy::update(float deltatime)
 {
 }
-
-void Enemy::move(float deltatime)
-{
-}
