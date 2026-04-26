@@ -12,6 +12,9 @@ Current Contribution List:
 
 Brock:
 - Created project files and repository
+- Created base projectile class
+- Created basic tower (Andy w/ Glasses) and defined behaviors
+- Created game object (tracks player values, object list vectors)
 
 Brandon:
 - Created map graphics and path systems
