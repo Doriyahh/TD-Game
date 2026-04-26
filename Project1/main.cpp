@@ -1,5 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "Map.hpp"
+#include "BasicTower.hpp"
+#include "BaseEnemy.hpp"
+#include "Projectile.hpp"
 
 int main()
 {
@@ -21,20 +24,40 @@ int main()
    }*/
 
     sf::RenderWindow window(sf::VideoMode({ 1200, 900 }), "Tower Defense Game");
+    window.setFramerateLimit(60);
 
+    Game* mainGame = new Game;
     Map map;
+    glassesAndy tower(mainGame, sf::Vector2f(600, 400), 1, 60, 100, 60);
+    BasicEnemy1 enemy;
+    enemy.setPosition(sf::Vector2f(650, 425));
+    mainGame->getEnemyVector().push_back(enemy);
+
 
     while (window.isOpen())
     {
+        window.clear();
         while (const std::optional event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
         }
 
-        window.clear();
+        for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
+            mainGame->getTowerVector()[i].update();
+        }
 
+        window.clear();
         map.draw(window);
+
+        //Draws all towers in game state
+        for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
+            window.draw(mainGame->getTowerVector()[i]);
+        }
+        //Draws all enemies in game state
+        for (int i = 0; i < mainGame->getEnemyVector().size(); i++) {
+            window.draw(mainGame->getEnemyVector()[i]);
+        }
 
         window.display();
     }

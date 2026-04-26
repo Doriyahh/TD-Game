@@ -1,12 +1,12 @@
 #include "Tower.hpp"
 
-void Tower::update(float dt)
+void Tower::update()
 {
     // Base update just ticks the shoot timer down
     // Subclasses will override this to actually shoot
     if (mShootTimer > 0.0f)
     {
-        mShootTimer -= dt;
+        mShootTimer--;
     }
 }
 

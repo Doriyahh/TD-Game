@@ -1,8 +1,11 @@
 #pragma once
+#include "Tower.hpp"
+
+
 
 class Projectile : public sf::CircleShape {
 public:
-	Projectile(sf::Vector2f& pos, float radius, float degrees, float damage, float speed) : CircleShape(radius) {
+	Projectile(Game*& game, const sf::Vector2f& pos, float radius, float degrees, float damage, float speed) : CircleShape(radius) {
 		this->setPosition(pos);
 
 		this->setRadius(radius);
@@ -12,14 +15,21 @@ public:
 		this->setDamage(damage);
 
 		this->setSpeed(speed);
+
+		this->mGame->getProjectileVector().push_back(*this);
+	}
+
+	~Projectile() {
+		this->mGame->removeProjectile(this);
 	}
 
 	void setDamage(float damage) { this->mDamage = damage; }
 
 	void setSpeed(float speed) { this->mSpeed = speed; }
 
-	virtual void update() = 0;
+	void update();
 private:
+	Game* mGame;
 	float mDamage; //Damage projectile will do
 	float mSpeed; //Speed of projectile
 };

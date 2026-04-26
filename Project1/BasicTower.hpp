@@ -4,7 +4,7 @@
 
 class glassesAndy : public Tower {
 public:
-	glassesAndy(Game* game, const sf::Vector2f& pos, const float& Damage = 0.0f, const float& AS = 0.0f, const float& Range = 0.0f, const float& ShootTimer = 0.0f)
+	glassesAndy(Game*& game, const sf::Vector2f& pos, float Damage, float AS, float Range, float ShootTimer)
 		: Tower(game, pos, Damage, AS, Range, ShootTimer)
 	{
 		this->setPosition(pos);
@@ -13,7 +13,12 @@ public:
 		this->mAS = AS;
 		this->mShootTimer = ShootTimer;
 		this->mRangeCircle.setRadius(Range);
+		this->setFillColor(sf::Color::Blue);
+
+		game->getTowerVector().push_back(*this);
 	}
+
+	~glassesAndy();
 
 	//Checks if enemy is in range of tower
 	bool isEnemyInRange(const Enemy& enemy);
@@ -24,7 +29,9 @@ public:
 	//Shoots at enemy
 	void shootEnemy();
 
-	void update();
+	void update() override;
+
+	
 
 private:
 

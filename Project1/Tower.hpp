@@ -7,6 +7,22 @@
 #include "Game.hpp"
 
 
+//PLEASE READ IF WORKING ON TOWERS!!!
+/*
+When instantiating a tower, please add it to the game tower vector.
+This is NOT a "Vector2f" from sf, this is a C++ specific data structure, acting as an array-linked list hybrid
+You do this by doing "mainGame.getTowerVector().push_back('your_tower');"
+You will need access to the mainGame object wherever you want to call it, but this is necessary for keeping track of
+all towers in the game state. Similarly, when a tower "dies", you will need to call
+"mainGame->getTowerVector().removeTower(this)" - It will remove that object from the list, so it will not get drawn anymore.
+This should not interfere with any systems you want to add to your towers, just a supplementary thing you can add to a constructor,
+given you have access to the mainGame object.
+A similar thing will be implemented for all temporary objects within the game.
+
+- Brock
+*/
+
+
 //Base tower class to be inherited by all other tower classes.
 //Origin is CENTER OF TOWER. Has range in form of circleshape object, also has origin at center.
 
@@ -14,9 +30,12 @@ class Tower : public sf::RectangleShape
 {
 public:
     Tower(Game*& game, const sf::Vector2f& pos, const float& Damage = 0.0f, const float& AS = 0.0f, const float& Range = 0.0f, const float& ShootTimer = 0.0f) 
-		: sf::RectangleShape(sf::Vector2f(50, 80)) // can change the size of the tower here if you want 
+		: sf::RectangleShape(sf::Vector2f(60, 60)) // can change the size of the tower here if you want 
         {
         //not sure if this is how you want the constructor or not
+
+         //Change origin to center of tower
+        this->setOrigin(sf::Vector2f((this->getSize().x) / 2.f, (this->getSize().y) / 2.f));
 
         this->setPosition(pos);
 
@@ -28,10 +47,9 @@ public:
 
         this->mShootTimer = ShootTimer;
 
-        this->game = game;
+        this->mGame = game;
 
-        //Change origin to center of tower
-        this->setOrigin(sf::Vector2f((this->getSize().x) / 2, (this->getSize().y) / 2));
+        //this->mGame->getTowerVector().push_back(*this); *PUT IN SUBCLASS CONSTRUCTORS*
 
         // Set up the range circle - centered on tower, radius = mRange
         mRangeCircle.setRadius(Range);
@@ -44,8 +62,17 @@ public:
 
         }
 
+    virtual ~Tower() {
+        /*
+        Override this for subclasses, and whatever their delete condition is, put:
+
+        this->mGame->removeTower(this);
+
+        */
+    }
+
     // Called each frame to handle shooting logic - virtual so subclasses can override
-    virtual void update(float dt);
+    virtual void update() = 0;
 
     // Draws the range circle to the window (call when tower is selected or placing)
     virtual void drawRange(sf::RenderWindow& window);
@@ -67,12 +94,16 @@ public:
 
     float getRange() const;
 
+    Enemy& getTarget() { return this->mTarget; }
+
+    void clearTarget() { this->mTarget = NULL; }
+
     Game*& getGame() { return this->game; }
 
     sf::CircleShape getRangeCircle() const;
 
     // Minimum distance allowed between two towers on placement
-    static constexpr float PLACEMENT_RADIUS = 60.0f;
+    static constexpr float PLACEMENT_RADIUS = 45.0f;
 
 protected:
 
@@ -84,7 +115,9 @@ protected:
 
 	float mShootTimer; //timer for shooting, tracks time between shots
 
-    Game* game;
+    Enemy& mTarget; //Current target of tower
+
+    Game* mGame;
 
 	sf::CircleShape mRangeCircle; //circle that shows the range of the tower
 

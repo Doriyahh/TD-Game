@@ -1,6 +1,11 @@
 #include "BasicTower.hpp"
 
 
+glassesAndy::~glassesAndy()
+{
+	this->mGame->removeTower(this);
+}
+
 //Calculates difference in positions of tower and enemy and determines if enemy is within tower range through arithmetic
 //Generative AI used to derive function formula
 bool glassesAndy::isEnemyInRange(const Enemy& enemy)
@@ -26,7 +31,7 @@ bool glassesAndy::isEnemyInRange(const Enemy& enemy)
 void glassesAndy::target(Enemy& enemy)
 {
 	sf::Vector2f enemyPos = enemy.getPosition() + sf::Vector2f(enemy.getRadius(), enemy.getRadius());
-	sf::Vector2f towerPos = this->getPosition() + sf::Vector2f((this->getSize().x) / 2, (this->getSize().y) / 2);
+	sf::Vector2f towerPos = this->getPosition();
 
 	float dx = enemyPos.x - towerPos.x;
 	float dy = enemyPos.y - towerPos.y;
@@ -44,7 +49,7 @@ void glassesAndy::shootEnemy()
     float rotationDegrees = this->getRotation().asDegrees();
 
     // Create projectile on the stack and push it into the game's projectile vector
-    Projectile newProjectile(this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 7.0f);
+    Projectile newProjectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 7.0f);
     this->getGame()->getProjectileVector().push_back(newProjectile);
 }
 
