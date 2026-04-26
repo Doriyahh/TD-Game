@@ -29,8 +29,7 @@ int main()
     Game* mainGame = new Game;
     Map map;
     glassesAndy tower(mainGame, sf::Vector2f(600, 400), 1, 60, 100, 60);
-    BasicEnemy1* newEnemy = new BasicEnemy1;
-    newEnemy->setPosition(sf::Vector2f(650, 425));
+    BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
     mainGame->getEnemyVector().push_back(newEnemy);
 
 
@@ -47,6 +46,10 @@ int main()
             mainGame->getTowerVector()[i]->update();
         }
 
+        for (int i = 0; i < mainGame->getEnemyVector().size(); i++)
+        {
+            mainGame->getEnemyVector()[i]->update();
+        }
         window.clear();
         map.draw(window);
 
@@ -58,7 +61,6 @@ int main()
         for (int i = 0; i < mainGame->getEnemyVector().size(); i++) {
             window.draw(*mainGame->getEnemyVector()[i]);
         }
-
         window.display();
     }
 

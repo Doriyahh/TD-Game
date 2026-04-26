@@ -5,12 +5,33 @@
 class BasicEnemy1 : public Enemy 
 {
 public:
-	BasicEnemy1(float Health = 3.0, float Damage = 1.0, float maxSpeed = 2.0, float Gold = 5.0) : Enemy(this->mGame, Health, Damage, maxSpeed, 0, Gold)
+
+	BasicEnemy1(Game*& mainGame, const std::vector<sf::Vector2f>& wp) : 
+	Enemy(mainGame, 3.f, 1.f, 20.f, 20.f, 5.f)
 	{
-		this->mHealth = Health;
-		this->mDamage = Damage;
-		this->mMaxSpeed = maxSpeed;
-		this->mGold = Gold;
+		this->mwaypoints = wp;
+		this->setPosition(sf::Vector2f(0.f, 137.5f));
+		this->setRadius(30);
+		this->setOrigin(sf::Vector2f(30, 30));
+		this->setFillColor(sf::Color::Red);
+		this->mArmor = 5.0;
 	}
-	
+
+	~BasicEnemy1()
+	{
+		if (this->getHealth() <= 0) {
+			this->mGame->removeEnemy(this);
+		}
+	}
+
+	void update() override
+	{
+		move();
+	}
+
+protected:
+	void move() override
+	{
+		Enemy::move();
+	}
 };

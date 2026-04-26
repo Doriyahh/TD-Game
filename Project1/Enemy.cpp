@@ -23,7 +23,7 @@ void Enemy::move()
 		float distance = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
 		//checks if how close it is to waypoint then will move to the next one
-		if (distance < 5.0f)
+		if (distance < mCSpeed)
 		{
 			mcurrentwaypoint++;
 			if (mcurrentwaypoint >= mwaypoints.size())
@@ -48,6 +48,7 @@ bool Enemy::reachedEnd() const
 	return false;
 }
 
-void Enemy::update(float deltatime)
+void Enemy::update()
 {
+	this->move();
 }

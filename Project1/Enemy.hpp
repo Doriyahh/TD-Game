@@ -113,7 +113,7 @@ public:
 	}
 	virtual bool isDead() const;
 	virtual bool reachedEnd() const;
-	virtual void update(float deltatime);
+	virtual void update();
 	virtual void move();
 
 protected:
