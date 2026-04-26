@@ -197,18 +197,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseEnemy.cpp" />
+    <ClCompile Include="BasicTower.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="FastEnemy.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseEnemy.hpp" />
+    <ClInclude Include="BasicTower.hpp" />
     <ClInclude Include="Enemy.hpp" />
-    <ClInclude Include="FastEnemy.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />
+    <ClInclude Include="Projectile.hpp" />
     <ClInclude Include="Tower.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

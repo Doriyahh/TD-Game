@@ -2,10 +2,10 @@
 
 #include "Enemy.hpp"
 
-class BasicEnemy : public Enemy 
+class BasicEnemy1 : public Enemy 
 {
 public:
-	BasicEnemy(float Health = 3.0, float Damage = 1.0, float maxSpeed = 2.0, float Gold = 5.0) : Enemy(Health, Damage, maxSpeed, 0, Gold)
+	BasicEnemy1(float Health = 3.0, float Damage = 1.0, float maxSpeed = 2.0, float Gold = 5.0) : Enemy(this->mGame, Health, Damage, maxSpeed, 0, Gold)
 	{
 		this->mHealth = Health;
 		this->mDamage = Damage;

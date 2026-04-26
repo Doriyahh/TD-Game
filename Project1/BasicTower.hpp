@@ -1,0 +1,38 @@
+#pragma once
+#include "Tower.hpp"
+#include <cmath>
+
+class glassesAndy : public Tower {
+public:
+	glassesAndy(Game*& game, const sf::Vector2f& pos, float Damage, float AS, float Range, float ShootTimer)
+		: Tower(game, pos, Damage, AS, Range, ShootTimer)
+	{
+		this->setPosition(pos);
+		this->mDamage = Damage;
+		this->mRange = Range;
+		this->mAS = AS;
+		this->mShootTimer = ShootTimer;
+		this->mRangeCircle.setRadius(Range);
+		this->setFillColor(sf::Color::Blue); //Temporary color, will figure out textures later
+
+		game->getTowerVector().push_back(this);
+	}
+
+	~glassesAndy();
+
+	//Checks if enemy is in range of tower
+	bool isEnemyInRange(Enemy*& enemy);
+
+
+	void target(Enemy*& enemy);
+
+	//Shoots at enemy
+	void shootEnemy();
+
+	void update() override;
+
+	
+
+private:
+
+};
