@@ -16,7 +16,7 @@ public:
 
 		this->setSpeed(speed);
 
-		this->mGame->getProjectileVector().push_back(*this);
+		this->mGame->getProjectileVector().push_back(this);
 	}
 
 	~Projectile() {

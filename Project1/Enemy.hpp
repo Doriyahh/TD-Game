@@ -24,7 +24,7 @@ A similar thing will be implemented for all temporary objects within the game.
 class Enemy : public sf::CircleShape
 {
 public:
-	Enemy(Game*& mainGame, float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0)
+	Enemy(Game*& mainGame, float Health, float Damage, float MaxSpeed, float CSpeed, float Gold)
 		: sf::CircleShape(30)
 		{
 			this->mHealth = Health;

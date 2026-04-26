@@ -1,18 +1,5 @@
 #include "Enemy.hpp"
 
-bool Enemy::isDead() const
-{
-	//returns true or false depending on whether the enemy is dead or not
-	if (this->mHealth <= 0)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 void Enemy::damageTaken(float amount)
 {
 	//checks the damaage a tower has done to it and applies that damage to their health bar

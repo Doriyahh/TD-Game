@@ -72,7 +72,7 @@ public:
     }
 
     // Called each frame to handle shooting logic - virtual so subclasses can override
-    virtual void update() = 0;
+    virtual void update();
 
     // Draws the range circle to the window (call when tower is selected or placing)
     virtual void drawRange(sf::RenderWindow& window);
@@ -94,7 +94,7 @@ public:
 
     float getRange() const;
 
-    Enemy& getTarget() { return this->mTarget; }
+    Enemy*& getTarget() { return this->mTarget; }
 
     void clearTarget() { this->mTarget = nullptr; }
 
@@ -115,9 +115,9 @@ protected:
 
 	float mShootTimer; //timer for shooting, tracks time between shots
 
-    Enemy& mTarget; //Current target of tower
+    Enemy* mTarget = nullptr; //Current target of tower
 
-    Game* mGame;
+    Game* mGame = nullptr;
 
 	sf::CircleShape mRangeCircle; //circle that shows the range of the tower
 

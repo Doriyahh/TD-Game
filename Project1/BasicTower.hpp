@@ -13,18 +13,18 @@ public:
 		this->mAS = AS;
 		this->mShootTimer = ShootTimer;
 		this->mRangeCircle.setRadius(Range);
-		this->setFillColor(sf::Color::Blue);
+		this->setFillColor(sf::Color::Blue); //Temporary color, will figure out textures later
 
-		game->getTowerVector().push_back(*this);
+		game->getTowerVector().push_back(this);
 	}
 
 	~glassesAndy();
 
 	//Checks if enemy is in range of tower
-	bool isEnemyInRange(const Enemy& enemy);
+	bool isEnemyInRange(Enemy*& enemy);
 
 
-	void target(Enemy& enemy);
+	void target(Enemy*& enemy);
 
 	//Shoots at enemy
 	void shootEnemy();

@@ -5,8 +5,8 @@
 void Game::removeEnemy(Enemy* target) {
     enemies.erase(
         std::remove_if(enemies.begin(), enemies.end(),
-            [target](const Enemy& e) {
-                return &e == target; // Compare addresses
+            [target](Enemy* e) { // Change type here
+                return e == target;
             }),
         enemies.end()
     );
@@ -15,8 +15,8 @@ void Game::removeEnemy(Enemy* target) {
 void Game::removeTower(Tower* target) {
     towers.erase(
         std::remove_if(towers.begin(), towers.end(),
-            [target](const Tower& t) {
-                return &t == target; // Compare addresses
+            [target](Tower* e) { // Change type here
+                return e == target;
             }),
         towers.end()
     );
@@ -25,8 +25,8 @@ void Game::removeTower(Tower* target) {
 void Game::removeProjectile(Projectile* target) {
     projectiles.erase(
         std::remove_if(projectiles.begin(), projectiles.end(),
-            [target](const Projectile& p) {
-                return &p == target; // Compare addresses
+            [target](Projectile* e) { // Change type here
+                return e == target;
             }),
         projectiles.end()
     );
