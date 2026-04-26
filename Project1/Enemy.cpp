@@ -1,6 +1,11 @@
 #include "Enemy.hpp"
 
-void Enemy::damageTaken(float amount)
+bool Enemy::isDead() const
+{
+	return false;
+}
+
+void Enemy::move()
 {
 	//Will check for waypoints and will stop moving if there is none
 	if (mwaypoints.empty() || mcurrentwaypoint >= mwaypoints.size())
@@ -31,9 +36,22 @@ void Enemy::damageTaken(float amount)
 		else
 		{
 			direction /= distance;
-			sf::CircleShape::move(direction * mCSpeed * deltatime);
+			sf::CircleShape::move(direction * mCSpeed);
 		}
 	
 	
 	//moves the enemy
+}
+
+bool Enemy::reachedEnd() const
+{
+	return false;
+}
+
+void Enemy::update(float deltatime)
+{
+}
+
+void Enemy::move(float deltatime)
+{
 }

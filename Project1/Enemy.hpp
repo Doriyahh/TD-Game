@@ -112,20 +112,20 @@ public:
 		this->mStun = newStun;
 	}
 	virtual bool isDead() const;
-	virtual void damageTaken(float amount);
 	virtual bool reachedEnd() const;
 	virtual void update(float deltatime);
 
 protected:
 
-	virtual  void move(float deltatime);
+	virtual void move();
 	float  mHealth;
 	float  mDamage;
 	float mMaxSpeed;
 	float mCSpeed;//current speed
 	float mGold;// reward for killing enemy
-	float mArmor; // do we want flat rate or percentage
-	float mStun; // complelety stops enemy
+	float mArmor = 0; // do we want flat rate or percentage
+	float mStun = 0; // complelety stops enemy
+	Game* mGame = nullptr;
 
 	bool dead = false;
 	bool reached =false;
