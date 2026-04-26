@@ -112,7 +112,7 @@ protected:
 	float mGold;// reward for killing enemy
 	float mArmor = 1; // do we want flat rate or percentage
 	float mStun = 0; // complelety stops enemy
-	Game* mGame;
+	Game* mGame; //
 
 	bool dead = false;
 	bool reached =false;
