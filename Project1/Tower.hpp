@@ -96,9 +96,9 @@ public:
 
     Enemy& getTarget() { return this->mTarget; }
 
-    void clearTarget() { this->mTarget = NULL; }
+    void clearTarget() { this->mTarget = nullptr; }
 
-    Game*& getGame() { return this->game; }
+    Game*& getGame() { return this->mGame; }
 
     sf::CircleShape getRangeCircle() const;
 
