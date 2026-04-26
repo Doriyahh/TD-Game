@@ -5,7 +5,7 @@
 class Enemy : public sf::CircleShape
 {
 public:
-	Enemy(float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0)
+	Enemy(Game*& mainGame, float Health = 0.0, float Damage = 0.0, float MaxSpeed = 0.0, float CSpeed = 0.0, float Gold = 0.0, std::vector<sf::Vector2f> waypoints= {})
 		: sf::CircleShape(30)
 		{
 			this->mHealth = Health;
@@ -13,14 +13,19 @@ public:
 			this->mMaxSpeed = MaxSpeed;
 			this->mCSpeed = CSpeed;
 			this->mGold = Gold;
-			
+			this->mGame = mainGame;
+				//this->mGame->getEnemyVector().push_back(*this); *PUT THIS IN SUBCLASS CONSTRUCTORS*
+			this->mwaypoints = waypoints;
+			this->mcurrentwaypoint  = 0;
 		}
 
 	virtual ~Enemy()
 	{
-		isDead();
+		if (this->getHealth() <= 0)
+		{
+			this->mGame->removeEnemy(this); //Removes enemy from list *OVERIDE FOR SUBCLASSES AND COPY*
 
-		//delete enemy here
+		}
 	
 	}
 	float getHealth()
@@ -92,9 +97,10 @@ public:
 	{
 		this->mStun = newStun;
 	}
-	virtual bool isDead() const;
+
 	virtual void damageTaken(float amount);
 	virtual bool reachedEnd() const;
+	virtual void update(float deltatime);
 
 protected:
 
@@ -104,13 +110,14 @@ protected:
 	float mMaxSpeed;
 	float mCSpeed;//current speed
 	float mGold;// reward for killing enemy
-	float mArmor; // do we want flat rate or percentage
-	float mStun; // complelety stops enemy
+	float mArmor = 1; // do we want flat rate or percentage
+	float mStun = 0; // complelety stops enemy
+	Game* mGame;
 
 	bool dead = false;
 	bool reached =false;
 	bool stunned = false;
 
-
-
+	std::vector<sf::Vector2f> mwaypoints;
+	int mcurrentwaypoint = 0;
 };
