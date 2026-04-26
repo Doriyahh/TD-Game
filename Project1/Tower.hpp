@@ -2,11 +2,18 @@
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
+#include "Enemy.hpp"
+#include "Projectile.hpp"
+#include "Game.hpp"
+
+
+//Base tower class to be inherited by all other tower classes.
+//Origin is CENTER OF TOWER. Has range in form of circleshape object, also has origin at center.
 
 class Tower : public sf::RectangleShape
 {
 public:
-    Tower(const sf::Vector2f& pos, const float& Damage = 0.0f, const float& AS = 0.0f, const float& Range = 0.0f, const float& ShootTimer = 0.0f) 
+    Tower(Game*& game, const sf::Vector2f& pos, const float& Damage = 0.0f, const float& AS = 0.0f, const float& Range = 0.0f, const float& ShootTimer = 0.0f) 
 		: sf::RectangleShape(sf::Vector2f(50, 80)) // can change the size of the tower here if you want 
         {
         //not sure if this is how you want the constructor or not
@@ -20,6 +27,11 @@ public:
         this->mRange = Range;
 
         this->mShootTimer = ShootTimer;
+
+        this->game = game;
+
+        //Change origin to center of tower
+        this->setOrigin(sf::Vector2f((this->getSize().x) / 2, (this->getSize().y) / 2));
 
         // Set up the range circle - centered on tower, radius = mRange
         mRangeCircle.setRadius(Range);
@@ -55,6 +67,8 @@ public:
 
     float getRange() const;
 
+    Game*& getGame() { return this->game; }
+
     sf::CircleShape getRangeCircle() const;
 
     // Minimum distance allowed between two towers on placement
@@ -69,6 +83,8 @@ protected:
     float mRange; // shooting radius in pixels
 
 	float mShootTimer; //timer for shooting, tracks time between shots
+
+    Game* game;
 
 	sf::CircleShape mRangeCircle; //circle that shows the range of the tower
 
