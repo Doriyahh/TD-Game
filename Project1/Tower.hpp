@@ -30,7 +30,7 @@ class Tower : public sf::RectangleShape
 {
 public:
     Tower(Game*& game, const sf::Vector2f& pos, const float& Damage, const float& AS, const float& Range) 
-		: sf::RectangleShape(sf::Vector2f(60, 60)) // can change the size of the tower here if you want 
+		: sf::RectangleShape(sf::Vector2f(40,40)) // can change the size of the tower here if you want 
         {
         //not sure if this is how you want the constructor or not
 
