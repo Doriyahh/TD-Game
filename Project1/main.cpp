@@ -3,7 +3,8 @@
 #include "BasicTower.hpp"
 #include "BaseEnemy.hpp"
 #include "Projectile.hpp"
-#include "Boss.hpp"
+#include "FasterEnemy.hpp";
+#include "Tank.hpp";
 int main()
 {
     /*sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
@@ -30,10 +31,11 @@ int main()
     Map map;
     glassesAndy tower(mainGame, sf::Vector2f(340, 400), 1, 20, 100);
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
-    Boss* enemy = new Boss(mainGame, map.getWaypoints());
+    FastEnemy* Fast = new FastEnemy(mainGame, map.getWaypoints());
+    TankEnemy* Tank = new TankEnemy(mainGame, map.getWaypoints());
     mainGame->getEnemyVector().push_back(newEnemy);
-    mainGame->getEnemyVector().push_back(enemy);
-
+    mainGame->getEnemyVector().push_back(Fast);
+    mainGame->getEnemyVector().push_back(Tank);
     while (window.isOpen())
     {
         window.clear();

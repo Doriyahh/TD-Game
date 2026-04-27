@@ -62,7 +62,10 @@
     <ClInclude Include="Projectile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.hpp">
+    <ClInclude Include="FasterEnemy.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tank.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -210,6 +210,8 @@
     <ClInclude Include="BasicTower.hpp" />
     <ClInclude Include="Boss.hpp" />
     <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="FasterEnemy.hpp" />
+    <ClInclude Include="Tank.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />
     <ClInclude Include="Projectile.hpp" />
