@@ -12,8 +12,10 @@ public:
 		this->mRange = Range;
 		this->mAS = AS;
 		this->mShootTimer = 0;
+		this->setRotation(sf::Angle(sf::degrees(180)));
 		this->mRangeCircle.setRadius(Range);
-		this->setFillColor(sf::Color::Blue); //Temporary color, will figure out textures later
+		this->pTexture->loadFromFile("External/Images/GlassesAndy.png");
+		this->setTexture(this->pTexture);
 
 		game->getTowerVector().push_back(this);
 	}
