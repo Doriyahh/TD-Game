@@ -208,6 +208,7 @@
   <ItemGroup>
     <ClInclude Include="BaseEnemy.hpp" />
     <ClInclude Include="BasicTower.hpp" />
+    <ClInclude Include="Boss.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />

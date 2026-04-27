@@ -3,7 +3,7 @@
 #include "BasicTower.hpp"
 #include "BaseEnemy.hpp"
 #include "Projectile.hpp"
-
+#include "Boss.hpp"
 int main()
 {
     /*sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
@@ -30,8 +30,9 @@ int main()
     Map map;
     glassesAndy tower(mainGame, sf::Vector2f(340, 400), 1, 20, 100);
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
+    Boss* enemy = new Boss(mainGame, map.getWaypoints());
     mainGame->getEnemyVector().push_back(newEnemy);
-
+    mainGame->getEnemyVector().push_back(enemy);
 
     while (window.isOpen())
     {

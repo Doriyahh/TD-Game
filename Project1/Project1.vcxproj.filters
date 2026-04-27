@@ -53,5 +53,17 @@
     <ClInclude Include="Enemy.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseEnemy.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicTower.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
