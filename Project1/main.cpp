@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Map.hpp"
 #include "BasicTower.hpp"
+#include "SniperTower.hpp"
 #include "BaseEnemy.hpp"
 #include "Projectile.hpp"
 #include "FasterEnemy.hpp";
@@ -29,7 +30,8 @@ int main()
 
     Game* mainGame = new Game;
     Map map;
-    glassesAndy tower(mainGame, sf::Vector2f(340, 400), 1, 20, 100);
+    glassesAndy tower(mainGame, sf::Vector2f(340, 400));
+    CigarAndy sniper(mainGame, sf::Vector2f(1100, 800));
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
     FastEnemy* Fast = new FastEnemy(mainGame, map.getWaypoints());
     TankEnemy* Tank = new TankEnemy(mainGame, map.getWaypoints());
@@ -73,6 +75,9 @@ int main()
         //Draws all projectiles in game state
         for (int i = 0; i < mainGame->getProjectileVector().size(); i++) {
             window.draw(*mainGame->getProjectileVector()[i]);
+        }
+        for (int i = 0; i < mainGame->getLaserVector().size(); i++) {
+            window.draw(*mainGame->getLaserVector()[i]);
         }
         window.display();
     }

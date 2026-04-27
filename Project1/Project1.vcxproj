@@ -203,6 +203,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="SniperTower.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +211,7 @@
     <ClInclude Include="BasicTower.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="FasterEnemy.hpp" />
+    <ClInclude Include="SniperTower.hpp" />
     <ClInclude Include="Tank.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />
