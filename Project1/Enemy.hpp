@@ -27,12 +27,13 @@ public:
 	Enemy(Game*& mainGame, float Health, float Damage, float MaxSpeed, float CSpeed, float Gold)
 		: sf::CircleShape(30)
 		{
+		this->setOrigin(sf::Vector2f(30, 30));
 			this->mHealth = Health;
 			this->mDamage = Damage;
 			this->mMaxSpeed = MaxSpeed;
 			this->mCSpeed = CSpeed;
 			this->mGold = Gold;
-			
+			this->mGame = mainGame;
 		}
 
 	virtual ~Enemy()
@@ -111,6 +112,9 @@ public:
 	{
 		this->mStun = newStun;
 	}
+	std::vector<sf::Vector2f>& getWaypoints() { return this->mwaypoints; }
+	int getCurrentWaypoint() { return this->mcurrentwaypoint; }
+
 	virtual bool isDead() const;
 	virtual bool reachedEnd() const;
 	virtual void update();

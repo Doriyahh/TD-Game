@@ -14,7 +14,7 @@ public:
 		this->setRadius(30);
 		this->setOrigin(sf::Vector2f(30, 30));
 		this->setFillColor(sf::Color::Red);
-		this->mArmor = 5.0;
+		this->mArmor = 0.0;
 	}
 
 	~BasicEnemy1()
@@ -22,11 +22,6 @@ public:
 		if (this->getHealth() <= 0) {
 			this->mGame->removeEnemy(this);
 		}
-	}
-
-	void update() override
-	{
-		move();
 	}
 
 protected:

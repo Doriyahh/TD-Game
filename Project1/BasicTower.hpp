@@ -4,14 +4,14 @@
 
 class glassesAndy : public Tower {
 public:
-	glassesAndy(Game*& game, const sf::Vector2f& pos, float Damage, float AS, float Range, float ShootTimer)
-		: Tower(game, pos, Damage, AS, Range, ShootTimer)
+	glassesAndy(Game*& game, const sf::Vector2f& pos, float Damage, float AS, float Range)
+		: Tower(game, pos, Damage, AS, Range)
 	{
 		this->setPosition(pos);
 		this->mDamage = Damage;
 		this->mRange = Range;
 		this->mAS = AS;
-		this->mShootTimer = ShootTimer;
+		this->mShootTimer = 0;
 		this->mRangeCircle.setRadius(Range);
 		this->setFillColor(sf::Color::Blue); //Temporary color, will figure out textures later
 

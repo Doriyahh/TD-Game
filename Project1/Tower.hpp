@@ -29,7 +29,7 @@ A similar thing will be implemented for all temporary objects within the game.
 class Tower : public sf::RectangleShape
 {
 public:
-    Tower(Game*& game, const sf::Vector2f& pos, const float& Damage = 0.0f, const float& AS = 0.0f, const float& Range = 0.0f, const float& ShootTimer = 0.0f) 
+    Tower(Game*& game, const sf::Vector2f& pos, const float& Damage, const float& AS, const float& Range) 
 		: sf::RectangleShape(sf::Vector2f(60, 60)) // can change the size of the tower here if you want 
         {
         //not sure if this is how you want the constructor or not
@@ -45,7 +45,7 @@ public:
 
         this->mRange = Range;
 
-        this->mShootTimer = ShootTimer;
+        this->mShootTimer = 0;
 
         this->mGame = game;
 

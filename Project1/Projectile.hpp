@@ -18,7 +18,11 @@ public:
 
 		this->setSpeed(speed);
 
+		this->setPierce(pierce);
+
 		this->setGame(game);
+
+		this->setFillColor(sf::Color::Magenta);
 	}
 
 	~Projectile() {
@@ -41,9 +45,14 @@ public:
 
 	bool checkHit(Enemy*& enemy);
 
+	bool searchEnemy(Enemy* target);
+
+	std::vector<Enemy*>& getHitEnemies() { return this->mHitEnemies; }
+
 	void update();
 private:
 	Game* mGame;
+	std::vector<Enemy*> mHitEnemies;
 	float mLife = 100;
 	float mDamage; //Damage projectile will do
 	float mSpeed; //Speed of projectile

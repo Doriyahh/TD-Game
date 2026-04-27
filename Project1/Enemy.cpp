@@ -51,4 +51,8 @@ bool Enemy::reachedEnd() const
 void Enemy::update()
 {
 	this->move();
+	if (this->getHealth() <= 0) {
+		this->mGame->setGold(this->mGame->getGold() + this->getGold());
+		this->mGame->removeEnemy(this);
+	}
 }

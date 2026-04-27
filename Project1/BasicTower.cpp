@@ -13,7 +13,7 @@ bool glassesAndy::isEnemyInRange(Enemy*& enemy)
 	//Gets vector for actual tower center
 	sf::Vector2f cp1 = this->getRangeCircle().getPosition();
 	//Gets vector for actual enemy center
-	sf::Vector2f cp2 = enemy->getPosition() + sf::Vector2f(enemy->getRadius(), enemy->getRadius());
+	sf::Vector2f cp2 = enemy->getPosition();
 
 	//Pythagorean theorem for actual distance between tower and enemy
 	float dx = cp1.x - cp2.x;
@@ -30,15 +30,30 @@ bool glassesAndy::isEnemyInRange(Enemy*& enemy)
 //Changes rotation of tower to point towards enemy
 void glassesAndy::target(Enemy*& enemy)
 {
-	sf::Vector2f enemyPos = enemy->getPosition() + sf::Vector2f(enemy->getRadius(), enemy->getRadius());
+	sf::Vector2f enemyPos = enemy->getPosition();
 	sf::Vector2f towerPos = this->getPosition();
 
-	float dx = enemyPos.x - towerPos.x;
-	float dy = enemyPos.y - towerPos.y;
+	//Get the direction the enemy is moving
+	sf::Vector2f targetWaypoint = enemy->getWaypoints()[enemy->getCurrentWaypoint()];
+	sf::Vector2f moveDir = targetWaypoint - enemyPos;
 
-	float rotation = std::atan2f(dy, dx) * 180 / 3.14159265;
+	//Normalize the direction
+	float dist = std::sqrt(moveDir.x * moveDir.x + moveDir.y * moveDir.y);
+	if (dist != 0) {
+		moveDir /= dist;
+	}
 
-	sf::Angle a1(sf::degrees(rotation));
+	//Lead the target
+	//Leading by a factor of the enemy's speed 
+	float leadDistance = enemy->getCSpeed() * (sqrt((enemyPos.x - towerPos.x) * (enemyPos.x - towerPos.x)) / 12.0f);
+	sf::Vector2f predictedPos = enemyPos + (moveDir * leadDistance);
+
+	//Calculate rotation toward the PREDICTED position
+	float dx = predictedPos.x - towerPos.x;
+	float dy = predictedPos.y - towerPos.y;
+	float rotation = std::atan2f(dy, dx);
+
+	sf::Angle a1(sf::radians(rotation));
 
 	this->setRotation(a1);
 }
@@ -49,7 +64,7 @@ void glassesAndy::shootEnemy()
     float rotationDegrees = this->getRotation().asDegrees();
 
     // Create projectile on the stack and push it into the game's projectile vector
-    Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 7.0f, 2.0f);
+    Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
     this->getGame()->getProjectileVector().push_back(newProjectile);
 }
 
@@ -68,10 +83,11 @@ void glassesAndy::update()
 			if (isEnemyInRange(this->getGame()->getEnemyVector()[i])) {
 				target(this->getGame()->getEnemyVector()[i]);
 				shootEnemy();
+				mShootTimer = mAS;
 				break;
 			}
 		}
-		mShootTimer = mAS;
+		
 	}
 	
 }
