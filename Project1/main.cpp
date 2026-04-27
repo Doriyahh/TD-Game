@@ -4,8 +4,9 @@
 #include "SniperTower.hpp"
 #include "BaseEnemy.hpp"
 #include "Projectile.hpp"
-#include "FasterEnemy.hpp";
-#include "Tank.hpp";
+#include "FasterEnemy.hpp"
+#include "Tank.hpp"
+#include "Boss.hpp"
 int main()
 {
     /*sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
@@ -35,9 +36,11 @@ int main()
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
     FastEnemy* Fast = new FastEnemy(mainGame, map.getWaypoints());
     TankEnemy* Tank = new TankEnemy(mainGame, map.getWaypoints());
+    BossEnemy* Boss = new BossEnemy(mainGame, map.getWaypoints());
     mainGame->getEnemyVector().push_back(newEnemy);
     mainGame->getEnemyVector().push_back(Fast);
     mainGame->getEnemyVector().push_back(Tank);
+    mainGame->getEnemyVector().push_back(Boss);
     while (window.isOpen())
     {
         window.clear();

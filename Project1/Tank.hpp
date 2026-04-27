@@ -4,7 +4,7 @@
 class TankEnemy : public Enemy
 {
 public: TankEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-	Enemy(mainGame, 5.f, 5.f, 1.f, 1.f, 6.f)
+	Enemy(mainGame, 2.f, 5.f, 1.f, 1.f, 6.f)
 {
 
 
@@ -13,7 +13,7 @@ public: TankEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
 	this->setRadius(35);
 	this->setOrigin(sf::Vector2f(35, 35));
 	this->setFillColor(sf::Color::Blue);
-	this->mArmor = 3.0f;
+	this->mArmor = 7.0f;
 
 }
 

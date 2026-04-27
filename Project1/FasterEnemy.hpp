@@ -10,8 +10,8 @@ public: FastEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
 	
 		this->mwaypoints = wp;
 		this->setPosition(sf::Vector2f(0.f, 137.5f));
-		this->setRadius(15);
-		this->setOrigin(sf::Vector2f(15, 15));
+		this->setRadius(30);
+		this->setOrigin(sf::Vector2f(30, 30));
 		this->setFillColor(sf::Color::Green);
 		this->mArmor = 0.0;
 	

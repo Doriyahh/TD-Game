@@ -68,5 +68,8 @@
     <ClInclude Include="Tank.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Boss.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
