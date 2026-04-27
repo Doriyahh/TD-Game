@@ -49,7 +49,7 @@ void glassesAndy::shootEnemy()
     float rotationDegrees = this->getRotation().asDegrees();
 
     // Create projectile on the stack and push it into the game's projectile vector
-    Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 7.0f);
+    Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 7.0f, 2.0f);
     this->getGame()->getProjectileVector().push_back(newProjectile);
 }
 
