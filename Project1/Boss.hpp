@@ -2,11 +2,11 @@
 
 #include "Enemy.hpp"
 
-class Boss : public Enemy
+class BossEnemy : public Enemy
 {
 public:
-	Boss(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-		Enemy(mainGame, 18.f, 3.f, 2.f, 2.f, 10.f)
+	BossEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
+		Enemy(mainGame, 18.f, 5.f, 2.f, 2.f, 10.f)
 	{
 		this->mwaypoints = wp;
 		this->setPosition(sf::Vector2f(0.f, 137.5f));
@@ -16,7 +16,7 @@ public:
 		this->mArmor = 0.0;
 	}
 
-	~Boss()
+	~BossEnemy()
 	{
 		if (this->getHealth() <= 0) {
 			this->mGame->removeEnemy(this);
@@ -26,11 +26,8 @@ public:
 protected:
 	void move() override
 	{
-		float healthRatio = this->mHealth / 18;
-
-		this->mCSpeed = 2.f * (1.f + (1.f - healthRatio) * 1.5f);
-
+		float healthRatio = this->mHealth / 18.f;
+		this->mCSpeed = 2.f * (1.0f + (1.0f - healthRatio) * 1.5f);
 		Enemy::move();
 	}
-
 };
