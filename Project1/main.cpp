@@ -58,6 +58,13 @@ int main()
                 window.close();
         }
 
+        std::sort(mainGame->getEnemyVector().begin(),
+            mainGame->getEnemyVector().end(), [](Enemy* a, Enemy* b)
+            {
+                return a->getCurrentWaypoint() > b->getCurrentWaypoint();
+
+            });
+
         for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
             mainGame->getTowerVector()[i]->update();
 
