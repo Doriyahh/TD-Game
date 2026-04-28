@@ -9,6 +9,7 @@
 #include "Tank.hpp"
 #include "Boss.hpp"
 #include "HealerEnemy.hpp"
+#include "SideMenu.hpp"
 int main()
 {
     /*sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
@@ -28,11 +29,12 @@ int main()
        window.display();
    }*/
 
-    sf::RenderWindow window(sf::VideoMode({ 1200, 900 }), "Tower Defense Game");
+    sf::RenderWindow window(sf::VideoMode({ 1600, 900 }), "Tower Defense Game");
     window.setFramerateLimit(60);
 
     Game* mainGame = new Game;
     Map map;
+    SideMenu sideMenu(mainGame);
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
     GoodBoyAndy aoe(mainGame, sf::Vector2f(340, 650));
     CigarAndy sniper(mainGame, sf::Vector2f(1100, 800));
@@ -81,6 +83,7 @@ int main()
 
         window.clear();
         map.draw(window);
+        sideMenu.draw(window);
 
         //Draws all towers in game state
         for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
