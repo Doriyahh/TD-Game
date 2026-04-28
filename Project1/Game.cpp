@@ -3,53 +3,41 @@
 #include <algorithm>
 
 void Game::removeEnemy(Enemy* target) {
-    // 1. Find the tower in the vector
-    auto it = std::find(enemies.begin(), enemies.end(), target);
-
-    if (it != enemies.end()) {
-        // 2. Delete the memory first
-        delete* it;
-
-        // 3. Remove the pointer from the vector
-        enemies.erase(it);
-    }
+    enemies.erase(
+        std::remove_if(enemies.begin(), enemies.end(),
+            [target](Enemy* e) { // Change type here
+                return e == target;
+            }),
+        enemies.end()
+    );
 }
 
 void Game::removeTower(Tower* target) {
-    // 1. Find the tower in the vector
-    auto it = std::find(towers.begin(), towers.end(), target);
-
-    if (it != towers.end()) {
-        // 2. Delete the memory first
-        delete* it;
-
-        // 3. Remove the pointer from the vector
-        towers.erase(it);
-    }
+    towers.erase(
+        std::remove_if(towers.begin(), towers.end(),
+            [target](Tower* e) { // Change type here
+                return e == target;
+            }),
+        towers.end()
+    );
 }
 
 void Game::removeProjectile(Projectile* target) {
-    // 1. Find the tower in the vector
-    auto it = std::find(projectiles.begin(), projectiles.end(), target);
-
-    if (it != projectiles.end()) {
-        // 2. Delete the memory first
-        delete* it;
-
-        // 3. Remove the pointer from the vector
-        projectiles.erase(it);
-    }
+    projectiles.erase(
+        std::remove_if(projectiles.begin(), projectiles.end(),
+            [target](Projectile* e) { // Change type here
+                return e == target;
+            }),
+        projectiles.end()
+    );
 }
 
 void Game::removeLaser(sf::RectangleShape* target) {
-    // 1. Find the tower in the vector
-    auto it = std::find(lasers.begin(), lasers.end(), target);
-
-    if (it != lasers.end()) {
-        // 2. Delete the memory first
-        delete* it;
-
-        // 3. Remove the pointer from the vector
-        lasers.erase(it);
-    }
+    lasers.erase(
+        std::remove_if(lasers.begin(), lasers.end(),
+            [target](sf::RectangleShape* e) { // Change type here
+                return e == target;
+            }),
+        lasers.end()
+    );
 }

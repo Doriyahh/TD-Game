@@ -29,7 +29,6 @@ bool Tower::updateBuying()
             return true;
         }
         //Does not add tower to object list if placement is invalid.
-        delete this;
         return true;
     }
 }

@@ -2,6 +2,7 @@
 
 CigarAndy::~CigarAndy()
 {
+	this->mGame->removeTower(this);
 }
 
 bool CigarAndy::isEnemyInRange(Enemy*& enemy)
