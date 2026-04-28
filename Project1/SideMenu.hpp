@@ -15,6 +15,13 @@ public:
 		this->setFillColor(sf::Color(117, 71, 33));
 		this->mGame = mainGame;
 
+		this->mPlayerGold->setLineAlignment(sf::Text::LineAlignment::Center);
+		this->mPlayerHealth->setLineAlignment(sf::Text::LineAlignment::Center);
+		this->mBasicInfo->setLineAlignment(sf::Text::LineAlignment::Center);
+		this->mSniperInfo->setLineAlignment(sf::Text::LineAlignment::Center);
+		this->mAoeInfo->setLineAlignment(sf::Text::LineAlignment::Center);
+
+
 		this->mGoldImage.setSize(sf::Vector2f(70, 70));
 		this->mGoldImage.setPosition(sf::Vector2f(1230, 20));
 
@@ -22,32 +29,48 @@ public:
 		this->mHealthImage.setPosition(sf::Vector2f(1240, 100));
 
 		this->mPlayerGold->setCharacterSize(43);
-		this->mPlayerGold->setFont(this->mFont);
 		this->mPlayerGold->setPosition(sf::Vector2f(1350, 20));
 		this->mPlayerGold->setFillColor(sf::Color::White);
 		this->mPlayerGold->setOutlineColor(sf::Color::Black);
 		this->mPlayerGold->setOutlineThickness(7.0f);
 
 		this->mPlayerHealth->setCharacterSize(43);
-		this->mPlayerHealth->setFont(this->mFont);
 		this->mPlayerHealth->setPosition(sf::Vector2f(1350, 95));
 		this->mPlayerHealth->setFillColor(sf::Color::White);
 		this->mPlayerHealth->setOutlineColor(sf::Color::Black);
 		this->mPlayerHealth->setOutlineThickness(7.0f);
 
-		this->mBasicTowerImage.setSize(sf::Vector2f(150, 150));
-		this->mBasicTowerImage.setOrigin(sf::Vector2f(75, 75));
-		this->mBasicTowerImage.setPosition(sf::Vector2f(1400, 275));
+		this->mBasicInfo->setCharacterSize(33);
+		this->mBasicInfo->setPosition(sf::Vector2f(1460, 320));
+		this->mBasicInfo->setFillColor(sf::Color::White);
+		this->mBasicInfo->setOutlineColor(sf::Color::Black);
+		this->mBasicInfo->setOutlineThickness(5.0f);
+
+		this->mSniperInfo->setCharacterSize(33);
+		this->mSniperInfo->setPosition(sf::Vector2f(1460, 520));
+		this->mSniperInfo->setFillColor(sf::Color::White);
+		this->mSniperInfo->setOutlineColor(sf::Color::Black);
+		this->mSniperInfo->setOutlineThickness(5.0f);
+
+		this->mAoeInfo->setCharacterSize(33);
+		this->mAoeInfo->setPosition(sf::Vector2f(1460, 720));
+		this->mAoeInfo->setFillColor(sf::Color::White);
+		this->mAoeInfo->setOutlineColor(sf::Color::Black);
+		this->mAoeInfo->setOutlineThickness(5.0f);
+
+		this->mBasicTowerImage.setSize(sf::Vector2f(100, 100));
+		this->mBasicTowerImage.setOrigin(sf::Vector2f(50, 50));
+		this->mBasicTowerImage.setPosition(sf::Vector2f(1275, 375));
 		this->mBasicTowerImage.setRotation(sf::degrees(180));
 
-		this->mSniperTowerImage.setSize(sf::Vector2f(150, 150));
-		this->mSniperTowerImage.setOrigin(sf::Vector2f(75, 75));
-		this->mSniperTowerImage.setPosition(sf::Vector2f(1400, 475));
+		this->mSniperTowerImage.setSize(sf::Vector2f(100, 100));
+		this->mSniperTowerImage.setOrigin(sf::Vector2f(50, 50));
+		this->mSniperTowerImage.setPosition(sf::Vector2f(1275, 575));
 		this->mSniperTowerImage.setRotation(sf::degrees(90));
 
-		this->mAoeTowerImage.setSize(sf::Vector2f(150, 150));
-		this->mAoeTowerImage.setOrigin(sf::Vector2f(75, 75));
-		this->mAoeTowerImage.setPosition(sf::Vector2f(1400, 675));
+		this->mAoeTowerImage.setSize(sf::Vector2f(100, 100));
+		this->mAoeTowerImage.setOrigin(sf::Vector2f(50, 50));
+		this->mAoeTowerImage.setPosition(sf::Vector2f(1275, 775));
 
 		this->mGoldImage.setTexture(this->mGoldTexture);
 		this->mHealthImage.setTexture(this->mHealthTexture);
@@ -87,6 +110,9 @@ private:
 	sf::Text* mPlayerHealth = new sf::Text(this->mFont, mHealth);
 	std::string mGold;
 	sf::Text* mPlayerGold = new sf::Text(this->mFont, mGold);
+	sf::Text* mBasicInfo = new sf::Text(this->mFont, "Glasses Andy\nBasic Type\n150 Gold");
+	sf::Text* mSniperInfo = new sf::Text(this->mFont, "Cigar Andy\nSniper Type\n250 Gold");
+	sf::Text* mAoeInfo = new sf::Text(this->mFont, "Good Guy Andy\nAoE Type\n300 Gold");
 	//All visual elements that isnt the menu background and text
 	sf::RectangleShape mGoldImage;
 	sf::RectangleShape mHealthImage;

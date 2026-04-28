@@ -4,9 +4,18 @@ void SideMenu::draw(sf::RenderWindow& window)
 {
 	//Draws all menu elements and does necessary updates
 	this->update();
+
+	//Background draw
 	window.draw(*this);
+
+	//Text draws
 	window.draw(*this->mPlayerGold);
 	window.draw(*this->mPlayerHealth);
+	window.draw(*this->mBasicInfo);
+	window.draw(*this->mSniperInfo);
+	window.draw(*this->mAoeInfo);
+
+	//Image draws
 	window.draw(this->mGoldImage);
 	window.draw(this->mHealthImage);
 	window.draw(this->mBasicTowerImage);

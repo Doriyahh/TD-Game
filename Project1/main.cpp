@@ -37,7 +37,7 @@ int main()
     SideMenu sideMenu(mainGame);
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
     GoodBoyAndy aoe(mainGame, sf::Vector2f(340, 650));
-    CigarAndy sniper(mainGame, sf::Vector2f(1100, 800));
+    CigarAndy sniper(mainGame, sf::Vector2f(1100, 500));
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
     HealerEnemy* Healer = new HealerEnemy(mainGame, map.getWaypoints());
     FastEnemy* Fast = new FastEnemy(mainGame, map.getWaypoints());
@@ -83,7 +83,7 @@ int main()
 
         window.clear();
         map.draw(window);
-        sideMenu.draw(window);
+        
 
         //Draws all towers in game state
         for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
@@ -102,6 +102,9 @@ int main()
         }
         
         
+        //Displays side menu
+        sideMenu.draw(window);
+
         window.display();
     }
 
