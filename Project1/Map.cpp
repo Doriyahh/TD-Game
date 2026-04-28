@@ -263,7 +263,7 @@ void Map::addClockTower(float x, float y)
     ctTrim.push_back(entranceTrim);
 
     // ------------------------------------------------------------------
-    // 11. DECORATIVE SHRUBS along the base (like in the photo)
+    // 11. DECORATIVE SHRUBS along the base 
     // ------------------------------------------------------------------
     for (int i = 0; i < 6; i++)
     {
@@ -412,7 +412,7 @@ Map::Map()
     paths.push_back(Path({ 400.f, 75.f }, { 800.f,  775.f }, sf::Color::Yellow));
 
     // ================================================================
-    // WAYPOINTS (unchanged)
+    // WAYPOINTS (!!!DO NOT CHANGE FOR THE LOVE OF GOD!!!)
     // ================================================================
     waypoints = {
         {   0.f,  137.5f },
@@ -431,7 +431,7 @@ Map::Map()
 }
 
 // -----------------------------------------------------------------------
-// Draw  — strict back-to-front layer order
+// Draw — back-to-front layer order
 // -----------------------------------------------------------------------
 void Map::draw(sf::RenderWindow& window)
 {
@@ -469,7 +469,8 @@ void Map::draw(sf::RenderWindow& window)
     for (auto& trunk : treeTrunks) window.draw(trunk);
     for (auto& top : treeTops)   window.draw(top);
 
-    // 8. Debug waypoint lines
+	// 8. AI Help: Debug waypoint lines and display them out in the open for you to see in a shorter easier section of code then 
+    // what was previously used. 
     for (size_t i = 0; i < waypoints.size() - 1; i++)
     {
         sf::Vertex line[2];
