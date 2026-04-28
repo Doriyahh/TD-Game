@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <SFML/Graphics.hpp>
 
 class Tower;
 class Enemy;
@@ -17,13 +18,16 @@ public:
 	void removeEnemy(Enemy* target);
 	void removeTower(Tower* target);
 	void removeProjectile(Projectile* target);
+	void removeLaser(sf::RectangleShape* target);
 	std::vector<Enemy*>& getEnemyVector() { return this->enemies; }
 	std::vector<Projectile*>& getProjectileVector() { return this->projectiles; }
 	std::vector<Tower*>& getTowerVector() { return this->towers; }
+	std::vector<sf::RectangleShape*>& getLaserVector() { return this->lasers; }
 private:
 	std::vector<Enemy*> enemies; //List of enemies present in game instance. Works similar to an array-list hybrid
 	std::vector<Projectile*> projectiles; //List of projectiles in game instance.
 	std::vector<Tower*> towers; //List of towers in game instance.
+	std::vector<sf::RectangleShape*> lasers;
 	int mPlayerGold = 650; // Central player gold count, will update upon tower purchase or enemy defeat
 	int mPlayerHealth = 150; // Player health count. Reduces if enemy reaches end, game ends if reaches zero
 };

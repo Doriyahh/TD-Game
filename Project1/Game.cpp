@@ -31,3 +31,13 @@ void Game::removeProjectile(Projectile* target) {
         projectiles.end()
     );
 }
+
+void Game::removeLaser(sf::RectangleShape* target) {
+    lasers.erase(
+        std::remove_if(lasers.begin(), lasers.end(),
+            [target](sf::RectangleShape* e) { // Change type here
+                return e == target;
+            }),
+        lasers.end()
+    );
+}
