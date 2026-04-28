@@ -24,10 +24,11 @@ A similar thing will be implemented for all temporary objects within the game.
 class Enemy : public sf::CircleShape
 {
 public:
-	Enemy(Game*& mainGame, float Health, float Damage, float MaxSpeed, float CSpeed, float Gold)
+	Enemy(Game*& mainGame,float MaxHealth, float Health, float Damage, float MaxSpeed, float CSpeed, float Gold)
 		: sf::CircleShape(30)
 		{
-		this->setOrigin(sf::Vector2f(30, 30));
+			this->setOrigin(sf::Vector2f(30, 30));
+			this->mMaxHealth = MaxHealth;
 			this->mHealth = Health;
 			this->mDamage = Damage;
 			this->mMaxSpeed = MaxSpeed;
@@ -42,6 +43,11 @@ public:
 
 		//delete enemy here
 	
+	}
+
+	float getMaxHealth()
+	{
+		return this->mMaxHealth;
 	}
 	float getHealth()
 	{
@@ -78,6 +84,11 @@ public:
 		return this->mStun;
 	}
 	//setters
+	void SetMaxHealth(float newMaxHealth)
+	{
+		this->mMaxHealth = newMaxHealth;
+	}
+
 	void setHealth(float newHealth)
 	{
 		this->mHealth = newHealth;
@@ -122,7 +133,7 @@ public:
 
 protected:
 
-	
+	float mMaxHealth;
 	float  mHealth;
 	float  mDamage;
 	float mMaxSpeed;

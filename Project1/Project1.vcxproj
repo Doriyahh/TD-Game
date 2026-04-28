@@ -200,6 +200,7 @@
     <ClCompile Include="BasicTower.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HealerEnemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Projectile.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="Boss.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="FasterEnemy.hpp" />
+    <ClInclude Include="HealerEnemy.hpp" />
     <ClInclude Include="Tank.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />

@@ -4,7 +4,7 @@
 class TankEnemy : public Enemy
 {
 public: TankEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-	Enemy(mainGame, 2.f, 5.f, 1.f, 1.f, 6.f)
+	Enemy(mainGame,2.f, 2.f, 5.f, 1.f, 1.f, 6.f)
 {
 
 
