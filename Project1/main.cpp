@@ -2,6 +2,7 @@
 #include "Map.hpp"
 #include "BasicTower.hpp"
 #include "SniperTower.hpp"
+#include "AoeTower.hpp"
 #include "BaseEnemy.hpp"
 #include "Projectile.hpp"
 #include "FasterEnemy.hpp"
@@ -33,6 +34,7 @@ int main()
     Game* mainGame = new Game;
     Map map;
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
+    GoodBoyAndy aoe(mainGame, sf::Vector2f(340, 650));
     CigarAndy sniper(mainGame, sf::Vector2f(1100, 800));
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
     HealerEnemy* Healer = new HealerEnemy(mainGame, map.getWaypoints());

@@ -37,6 +37,8 @@ public:
 
 	void setPierce(float pierce) { this->mPierce = pierce; }
 
+	void setLife(float life) { this->mLife = life; }
+
 	void setGame(Game*& game) { this->mGame = game; }
 
 	void incLife() { this->mLife--; }
