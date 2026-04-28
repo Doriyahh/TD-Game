@@ -45,7 +45,7 @@ void Enemy::move()
 
 bool Enemy::reachedEnd() const
 {
-	return false;
+	return reached;
 }
 
 void Enemy::update()

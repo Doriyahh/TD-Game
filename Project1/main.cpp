@@ -59,11 +59,29 @@ int main()
 
         for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
             mainGame->getTowerVector()[i]->update();
+
+
         }
 
         for (int i = 0; i < mainGame->getEnemyVector().size(); i++)
         {
             mainGame->getEnemyVector()[i]->update();
+
+            if (mainGame->getEnemyVector()[i]->reachedEnd())
+            {
+                //reduces player health
+                mainGame->setHealth(mainGame->getHealth() - (int)mainGame->getEnemyVector()[i]->getDamage());
+
+                //get rid of enemy from map
+                mainGame->removeEnemy(mainGame->getEnemyVector()[i]);
+                i--;
+
+
+                if (Healer != nullptr)
+                {
+                    Healer->HealNearby(mainGame->getEnemyVector());
+                }
+            }
         }
 
         for (int i = 0; i < mainGame->getProjectileVector().size(); i++)
@@ -71,15 +89,7 @@ int main()
             mainGame->getProjectileVector()[i]->update();
         }
 
-        for (int i = 0; i < mainGame->getEnemyVector().size(); i++)
-        {
-            mainGame->getEnemyVector()[i]->update();
-
-            if (Healer != nullptr)
-            {
-                Healer->HealNearby(mainGame->getEnemyVector());
-            }
-        }
+   
 
         window.clear();
         map.draw(window);
