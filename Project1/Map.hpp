@@ -31,6 +31,8 @@ public:
     Map();
     void draw(sf::RenderWindow& window);
 
+    std::vector<Path>& getPaths() { return this->paths; }
+
     // So you guys can access the waypoints from outside the class and use them for enemy movement
     const std::vector<sf::Vector2f>& getWaypoints() const;
 

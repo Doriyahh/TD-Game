@@ -15,6 +15,7 @@ public:
 		this->mRangeCircle.setRadius(this->mRange);
 		this->pTexture->loadFromFile("External/Images/GlassesAndy.png");
 		this->setTexture(this->pTexture);
+		this->mPrice = 150;
 
 		game->getTowerVector().push_back(this);
 	}

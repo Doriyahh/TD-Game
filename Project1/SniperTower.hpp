@@ -16,6 +16,7 @@ public:
 		this->mRangeCircle.setRadius(this->mRange);
 		this->pTexture->loadFromFile("External/Images/CigarAndy.png");
 		this->setTexture(this->pTexture);
+		this->mPrice = 250;
 
 		this->getGame()->getLaserVector().push_back(this->mLaser);
 		this->mLaser->setFillColor(sf::Color(255, 0, 0, 0));

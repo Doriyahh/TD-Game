@@ -32,17 +32,16 @@ int main()
     sf::RenderWindow window(sf::VideoMode({ 1600, 900 }), "Tower Defense Game");
     window.setFramerateLimit(60);
 
-    Game* mainGame = new Game;
-    Map map;
-    SideMenu sideMenu(mainGame);
+    Game* mainGame = new Game(window);
+    SideMenu sideMenu(mainGame, window);
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
     GoodBoyAndy aoe(mainGame, sf::Vector2f(340, 650));
     CigarAndy sniper(mainGame, sf::Vector2f(1100, 500));
-    BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
-    HealerEnemy* Healer = new HealerEnemy(mainGame, map.getWaypoints());
-    FastEnemy* Fast = new FastEnemy(mainGame, map.getWaypoints());
-    TankEnemy* Tank = new TankEnemy(mainGame, map.getWaypoints());
-    BossEnemy* Boss = new BossEnemy(mainGame, map.getWaypoints());
+    BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, mainGame->getMap().getWaypoints());
+    HealerEnemy* Healer = new HealerEnemy(mainGame, mainGame->getMap().getWaypoints());
+    FastEnemy* Fast = new FastEnemy(mainGame, mainGame->getMap().getWaypoints());
+    TankEnemy* Tank = new TankEnemy(mainGame, mainGame->getMap().getWaypoints());
+    BossEnemy* Boss = new BossEnemy(mainGame, mainGame->getMap().getWaypoints());
     mainGame->getEnemyVector().push_back(newEnemy);
     mainGame->getEnemyVector().push_back(Fast);
     mainGame->getEnemyVector().push_back(Tank);
@@ -50,6 +49,7 @@ int main()
     mainGame->getEnemyVector().push_back(Healer);
     while (window.isOpen())
     {
+        mainGame->setMousePos(window.mapPixelToCoords(sf::Mouse::getPosition()));
         window.clear();
         while (const std::optional event = window.pollEvent())
         {
@@ -82,7 +82,7 @@ int main()
         }
 
         window.clear();
-        map.draw(window);
+        mainGame->getMap().draw(window);
         
 
         //Draws all towers in game state
@@ -103,6 +103,7 @@ int main()
         
         
         //Displays side menu
+        sideMenu.update();
         sideMenu.draw(window);
 
         window.display();

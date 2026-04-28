@@ -9,11 +9,12 @@
 
 class SideMenu : public sf::RectangleShape {
 public:
-	SideMenu(Game* mainGame) {
+	SideMenu(Game* mainGame, sf::RenderWindow& window) {
 		this->setSize(sf::Vector2f(400, 900));
 		this->setPosition(sf::Vector2f(1200, 0));
 		this->setFillColor(sf::Color(117, 71, 33));
 		this->mGame = mainGame;
+		this->mWindow = &window;
 
 		this->mPlayerGold->setLineAlignment(sf::Text::LineAlignment::Center);
 		this->mPlayerHealth->setLineAlignment(sf::Text::LineAlignment::Center);
@@ -91,6 +92,8 @@ public:
 
 	void setGoldText(sf::Text*& gold) { this->mPlayerGold = gold; }
 
+	void buyBasicTower();
+
 	sf::Text*& getGoldText() { return this->mPlayerGold; }
 
 	sf::Text*& getHealthText() { return this->mPlayerHealth; }
@@ -103,6 +106,7 @@ public:
 
 private:
 	Game* mGame;
+	sf::RenderWindow* mWindow;
 	//Font in use, can be anything i just used something i had downloaded
 	sf::Font mFont = sf::Font(std::filesystem::path("External/Fonts/edosz.ttf"));
 	//Text elements
@@ -125,4 +129,7 @@ private:
 	sf::Texture* mBasicTexture = new sf::Texture(std::filesystem::path("External/Images/GlassesAndy.png"));
 	sf::Texture* mSniperTexture = new sf::Texture(std::filesystem::path("External/Images/CigarAndy.png"));
 	sf::Texture* mAoeTexture = new sf::Texture(std::filesystem::path("External/Images/GoodBoyAndy.png"));
+
+	//Tower in process of being bought
+	Tower* mTower = nullptr;
 };

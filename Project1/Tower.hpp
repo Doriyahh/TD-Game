@@ -74,11 +74,17 @@ public:
     // Called each frame to handle shooting logic - virtual so subclasses can override
     virtual void update();
 
+    //Specific update function for tower in the process of being placed
+    bool updateBuying();
+
     // Draws the range circle to the window (call when tower is selected or placing)
     virtual void drawRange(sf::RenderWindow& window);
 
     // Returns true if another tower is within the minimum placement distance
-    bool isTooClose(const Tower& other) const;
+    bool isTooClose(Tower*& other);
+
+    //Checks if the spot the tower is in is valid
+    bool isPlacementValid();
     
     //setters
     void setDamage(float newDamage);
@@ -93,6 +99,8 @@ public:
     float getAS() const;
 
     float getRange() const;
+
+    float getPrice() { return this->mPrice; }
 
     Enemy*& getTarget() { return this->mTarget; }
 
@@ -114,6 +122,8 @@ protected:
     float mRange; // shooting radius in pixels
 
 	float mShootTimer; //timer for shooting, tracks time between shots
+
+    float mPrice;
 
     sf::Texture mTexture;
 
