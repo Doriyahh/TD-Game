@@ -12,7 +12,7 @@ public:
 	SideMenu(Game* mainGame, sf::RenderWindow& window) {
 		this->setSize(sf::Vector2f(400, 900));
 		this->setPosition(sf::Vector2f(1200, 0));
-		this->setFillColor(sf::Color(117, 71, 33));
+		this->setTexture(mMenuBackground);
 		this->mGame = mainGame;
 		this->mWindow = &window;
 
@@ -113,6 +113,7 @@ private:
 	sf::RenderWindow* mWindow;
 	//Font in use, can be anything i just used something i had downloaded
 	sf::Font mFont = sf::Font(std::filesystem::path("External/Fonts/edosz.ttf"));
+	sf::Texture* mMenuBackground = new sf::Texture(std::filesystem::path("External/Images/MenuBackground.png"));
 	//Text elements
 	std::string mHealth;
 	sf::Text* mPlayerHealth = new sf::Text(this->mFont, mHealth);

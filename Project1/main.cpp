@@ -10,29 +10,16 @@
 #include "Boss.hpp"
 #include "HealerEnemy.hpp"
 #include "SideMenu.hpp"
+#include "MainMenu.hpp"
 int main()
 {
-    /*sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
-   sf::CircleShape shape(100.f);
-   shape.setFillColor(sf::Color::Green);
-
-   while (window.isOpen())
-   {
-       while (const std::optional event = window.pollEvent())
-       {
-           if (event->is<sf::Event::Closed>())
-               window.close();
-       }
-
-       window.clear();
-       window.draw(shape);
-       window.display();
-   }*/
 
     sf::RenderWindow window(sf::VideoMode({ 1600, 900 }), "Tower Defense Game");
     window.setFramerateLimit(60);
 
     Game* mainGame = new Game(window);
+    MainMenu mainMenu(window);
+    bool gameStart = false;
     SideMenu sideMenu(mainGame, window);
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
     mainGame->getTowerVector().push_back(&tower);
@@ -48,6 +35,23 @@ int main()
     mainGame->getEnemyVector().push_back(Tank);
     mainGame->getEnemyVector().push_back(Boss);
     mainGame->getEnemyVector().push_back(Healer);
+
+    //Main menu loop
+    while (window.isOpen() && gameStart == false) {
+        window.clear();
+        while (const std::optional event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+        mainMenu.draw(window);
+        window.display();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter)) {
+            gameStart = true;
+        }
+    }
+
+    //Game loop
     while (window.isOpen())
     {
         mainGame->setMousePos(window.mapPixelToCoords(sf::Mouse::getPosition(window)));

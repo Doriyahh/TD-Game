@@ -63,12 +63,6 @@ public:
         }
 
     virtual ~Tower() {
-        /*
-        Override this for subclasses, and whatever their delete condition is, put:
-
-        this->mGame->removeTower(this);
-
-        */
     }
 
     // Called each frame to handle shooting logic - virtual so subclasses can override

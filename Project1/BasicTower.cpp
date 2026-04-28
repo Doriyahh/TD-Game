@@ -3,7 +3,6 @@
 
 glassesAndy::~glassesAndy()
 {
-	this->getGame()->removeTower(this);
 }
 
 //Calculates difference in positions of tower and enemy and determines if enemy is within tower range through arithmetic
