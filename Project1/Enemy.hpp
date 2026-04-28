@@ -143,6 +143,12 @@ protected:
 	float mStun = 0; // complelety stops enemy
 	Game* mGame = nullptr;
 
+
+	sf::Texture mTexture;
+
+	sf::Texture* pTexture = &mTexture;
+
+
 	bool dead = false;
 	bool reached =false;
 	bool stunned = false;

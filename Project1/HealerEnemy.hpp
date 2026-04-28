@@ -12,8 +12,10 @@ public: HealerEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
 	this->setPosition(sf::Vector2f(0.f, 137.5f));
 	this->setRadius(15);
 	this->setOrigin(sf::Vector2f(15, 15));
-	this->setFillColor(sf::Color::Magenta);
+	//this->setFillColor(sf::Color::Magenta);
 	this->mArmor = 0.0;
+	this->pTexture->loadFromFile("External/Images/Claude.png");
+	this->setTexture(this->pTexture);
 	this->mHealRadius = 50.f;
 	this->mHealAmount = 3.f;
 }

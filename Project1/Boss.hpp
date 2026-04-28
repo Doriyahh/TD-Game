@@ -13,6 +13,8 @@ public:
 		this->setRadius(40);
 		this->setOrigin(sf::Vector2f(40, 40));
 		this->setFillColor(sf::Color::White);
+		this->pTexture->loadFromFile("External/Images/Visual.png");
+		this->setTexture(this->pTexture);
 		this->mArmor = 0.0;
 	}
 
