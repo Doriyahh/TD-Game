@@ -2,6 +2,18 @@
 
 void HealerEnemy::HealNearby(std::vector<Enemy*>& enemies)
 {
+	//inrements time every frame
+	mHealerTimer++;
+
+	//when timer eaches interval it wil heal
+	if (mHealerTimer < mHealerInterval)
+	{
+		return;
+	}
+
+	//sets timer back to zero
+	mHealerTimer = 0;
+
 	sf::Vector2f healerPos = this->getPosition();
 
 	//loop through all enemies on the vector
@@ -25,9 +37,10 @@ void HealerEnemy::HealNearby(std::vector<Enemy*>& enemies)
 			if (newhealth > enemy->getMaxHealth())
 			{
 				newhealth = enemy->getMaxHealth();
+				
 			}
-
 			enemy->setHealth(newhealth);
+			
 		}
 
 	}

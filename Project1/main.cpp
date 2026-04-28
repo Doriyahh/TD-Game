@@ -7,6 +7,7 @@
 #include "FasterEnemy.hpp"
 #include "Tank.hpp"
 #include "Boss.hpp"
+#include "HealerEnemy.hpp"
 int main()
 {
     /*sf::RenderWindow window(sf::VideoMode({ 200, 200 }), "SFML works!");
@@ -34,6 +35,7 @@ int main()
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
     CigarAndy sniper(mainGame, sf::Vector2f(1100, 800));
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, map.getWaypoints());
+    HealerEnemy* Healer = new HealerEnemy(mainGame, map.getWaypoints());
     FastEnemy* Fast = new FastEnemy(mainGame, map.getWaypoints());
     TankEnemy* Tank = new TankEnemy(mainGame, map.getWaypoints());
     BossEnemy* Boss = new BossEnemy(mainGame, map.getWaypoints());
@@ -41,6 +43,7 @@ int main()
     mainGame->getEnemyVector().push_back(Fast);
     mainGame->getEnemyVector().push_back(Tank);
     mainGame->getEnemyVector().push_back(Boss);
+    mainGame->getEnemyVector().push_back(Healer);
     while (window.isOpen())
     {
         window.clear();
@@ -64,6 +67,16 @@ int main()
             mainGame->getProjectileVector()[i]->update();
         }
 
+        for (int i = 0; i < mainGame->getEnemyVector().size(); i++)
+        {
+            mainGame->getEnemyVector()[i]->update();
+
+            if (Healer != nullptr)
+            {
+                Healer->HealNearby(mainGame->getEnemyVector());
+            }
+        }
+
         window.clear();
         map.draw(window);
 
@@ -82,6 +95,8 @@ int main()
         for (int i = 0; i < mainGame->getLaserVector().size(); i++) {
             window.draw(*mainGame->getLaserVector()[i]);
         }
+        
+        
         window.display();
     }
 

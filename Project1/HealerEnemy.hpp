@@ -4,7 +4,7 @@
 class HealerEnemy : public Enemy
 {
 public: HealerEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-	Enemy(mainGame, 3.f, 3.f, 3.f, 5.f, 5.f, 5.f)
+	Enemy(mainGame, 3.f, 3.f, 3.f, 3.f, 3.f, 5.f)
 {
 
 
@@ -14,8 +14,8 @@ public: HealerEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
 	this->setOrigin(sf::Vector2f(15, 15));
 	this->setFillColor(sf::Color::Magenta);
 	this->mArmor = 0.0;
-	this->mHealRadius = 20.f;
-	this->mHealAmount = 2.f;
+	this->mHealRadius = 50.f;
+	this->mHealAmount = 3.f;
 }
 
 	  ~HealerEnemy()
@@ -35,4 +35,6 @@ protected:
 private:
 	float mHealRadius;
 	float mHealAmount;
+	float mHealerTimer;
+	float mHealerInterval = 120;
 };
