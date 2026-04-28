@@ -29,24 +29,9 @@ void CigarAndy::target(Enemy*& enemy)
 	sf::Vector2f enemyPos = enemy->getPosition();
 	sf::Vector2f towerPos = this->getPosition();
 
-	//Get the direction the enemy is moving
-	sf::Vector2f targetWaypoint = enemy->getWaypoints()[enemy->getCurrentWaypoint()];
-	sf::Vector2f moveDir = targetWaypoint - enemyPos;
-
-	//Normalize the direction
-	float dist = std::sqrt(moveDir.x * moveDir.x + moveDir.y * moveDir.y);
-	if (dist != 0) {
-		moveDir /= dist;
-	}
-
-	//Lead the target
-	//Leading by a factor of the enemy's speed 
-	float leadDistance = enemy->getCSpeed() * (sqrt((enemyPos.x - towerPos.x) * (enemyPos.x - towerPos.x)) / 12.0f);
-	sf::Vector2f predictedPos = enemyPos + (moveDir * leadDistance);
-
 	//Calculate rotation toward the PREDICTED position
-	float dx = predictedPos.x - towerPos.x;
-	float dy = predictedPos.y - towerPos.y;
+	float dx = enemyPos.x - towerPos.x;
+	float dy = enemyPos.y - towerPos.y;
 	float rotation = std::atan2f(dy, dx);
 
 	sf::Angle a1(sf::radians(rotation));

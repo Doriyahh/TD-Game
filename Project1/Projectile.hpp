@@ -3,6 +3,7 @@
 
 
 
+
 class Projectile : public sf::CircleShape {
 public:
 	Projectile(Game*& game, const sf::Vector2f& pos, float radius, float degrees, float damage, float speed, float pierce) : CircleShape(radius) {

@@ -1,4 +1,6 @@
 #include "Projectile.hpp"
+#include "Game.hpp"
+
 
 bool Projectile::checkHit(Enemy*& enemy)
 {

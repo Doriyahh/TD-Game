@@ -73,7 +73,7 @@ bool Tower::isPlacementValid()
         }
     }
     //Checks if within map border
-    if (this->getGlobalBounds().findIntersection(sf::FloatRect(sf::Vector2f(0.f, 0.f), sf::Vector2f(1200.f, 900.f)))) {
+    if (this->getGlobalBounds().findIntersection(sf::FloatRect(sf::Vector2f(60.f, 60.f), sf::Vector2f(1080.f, 780.f)))) {
         this->setFillColor(sf::Color(255, 255, 255, 255));
         return true;
     }

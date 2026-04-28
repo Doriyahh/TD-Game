@@ -1,0 +1,5 @@
+//Frames until spawn from last enemy, Round, Enemy Type//
+60,1,BossEnemy
+60,1,BasicEnemy
+60,1,FastEnemy
+60,1,HealerEnemy

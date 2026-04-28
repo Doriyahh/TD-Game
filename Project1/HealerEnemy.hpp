@@ -1,5 +1,7 @@
 #pragma once
 #include "Enemy.hpp"
+#include "Game.hpp"
+
 
 class HealerEnemy : public Enemy
 {

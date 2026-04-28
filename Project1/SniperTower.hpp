@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Tower.hpp"
+#include "Game.hpp"
+
 
 class CigarAndy : public Tower {
 public:

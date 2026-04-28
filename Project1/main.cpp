@@ -18,6 +18,7 @@ int main()
     window.setFramerateLimit(60);
 
     Game* mainGame = new Game(window);
+    mainGame->roundHandler();
     MainMenu mainMenu(window);
     bool gameStart = false;
     SideMenu sideMenu(mainGame, window);
@@ -54,6 +55,7 @@ int main()
     //Game loop
     while (window.isOpen())
     {
+
         mainGame->setMousePos(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
         window.clear();
         while (const std::optional event = window.pollEvent())
@@ -101,6 +103,17 @@ int main()
             mainGame->getProjectileVector()[i]->update();
         }
 
+
+        //Increment the spawn timer
+        mainGame->incSpawnTimer();         
+
+        //If the spawn timer is zero and the check for round end is false
+        if (mainGame->getSpawnTimer() <= 0 && mainGame->getStopSpawn() == false) {
+            //Spawn new enemy
+            mainGame->getEnemyVector().push_back(mainGame->getEnemy());
+            //Get next enemy
+            mainGame->roundHandler();           
+        }
    
 
         window.clear();
@@ -127,6 +140,13 @@ int main()
         //Displays side menu
         sideMenu.update();
         sideMenu.draw(window);
+
+        if (mainGame->getStopSpawn()) {
+            window.draw(*mainGame->getRoundText());
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
+                mainGame->setStopSpawn(false);
+            }
+        }
 
         window.display();
     }
