@@ -108,7 +108,7 @@ public:
 
     Game*& getGame() { return this->mGame; }
 
-    sf::CircleShape getRangeCircle() const;
+    sf::CircleShape& getRangeCircle() { return this->mRangeCircle; }
 
     // Minimum distance allowed between two towers on placement
     static constexpr float PLACEMENT_RADIUS = 45.0f;

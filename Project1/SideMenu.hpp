@@ -94,6 +94,10 @@ public:
 
 	void buyBasicTower();
 
+	void buySniperTower();
+
+	void buyAoeTower();
+
 	sf::Text*& getGoldText() { return this->mPlayerGold; }
 
 	sf::Text*& getHealthText() { return this->mPlayerHealth; }

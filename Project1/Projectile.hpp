@@ -26,7 +26,6 @@ public:
 	}
 
 	~Projectile() {
-		this->mGame->removeProjectile(this);
 	}
 
 	void setDamage(float damage) { this->mDamage = damage; }

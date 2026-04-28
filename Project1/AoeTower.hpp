@@ -16,8 +16,6 @@ public:
 		this->pTexture->loadFromFile("External/Images/GoodBoyAndy.png");
 		this->setTexture(this->pTexture);
 		this->mPrice = 300;
-
-		game->getTowerVector().push_back(this);
 	}
 
 	~GoodBoyAndy();

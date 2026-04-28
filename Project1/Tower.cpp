@@ -10,19 +10,27 @@ void Tower::update()
     }
 }
 
+//Update that specifically runs while tower is being bought
 bool Tower::updateBuying()
 {
+    //Checks if player is still "dragging"
     if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+        //Sets object to mouse position if so
         this->setPosition(this->getGame()->getMousePos());
         return false;
     }
     else {
+        //If player is done dragging, checks if placement is valid, THEN adds tower to main
+        //object list so it can start attacking
         if (this->isPlacementValid() && this->getGame()->getGold() >= this->getPrice()) {
             this->getGame()->getTowerVector().push_back(this);
             this->getGame()->setGold(this->getGame()->getGold() - this->getPrice());
+            this->getRangeCircle().setPosition(this->getPosition());
             return true;
         }
-        return false;
+        //Does not add tower to object list if placement is invalid.
+        delete this;
+        return true;
     }
 }
 
@@ -35,33 +43,42 @@ void Tower::drawRange(sf::RenderWindow& window)
 
 bool Tower::isTooClose(Tower*& other)
 {
-    // Get distance between this tower and another
-    sf::Vector2f diff = this->getPosition() - other->getPosition();
-    float distance = std::sqrt(diff.x * diff.x + diff.y * diff.y);
+    if (this == other) {
+        return false;
+    }
 
-    return distance > PLACEMENT_RADIUS;
+    // Get distance between this tower and another
+    if (this->getGlobalBounds().findIntersection(other->getGlobalBounds())) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 bool Tower::isPlacementValid()
 {
     //Checks all collisions with other towers
-    for (int i = 0; i < this->getGame()->getTowerVector().size(); i++) {
+   for (int i = 0; i < this->getGame()->getTowerVector().size(); i++) {
         if (this->isTooClose(this->getGame()->getTowerVector()[i])) {
-            this->setFillColor(sf::Color(255, 0, 0, 200));
+            this->setFillColor(sf::Color(200, 0, 0, 255));
             return false;
         }
     }
     //Checks collisions with paths
     for (int i = 0; i < this->getGame()->getMap().getPaths().size(); i++) {
         if (this->getGlobalBounds().findIntersection(this->getGame()->getMap().getPaths()[i].getGlobalBounds())) {
+            this->setFillColor(sf::Color(200, 0, 0, 255));
             return false;
         }
     }
     //Checks if within map border
     if (this->getGlobalBounds().findIntersection(sf::FloatRect(sf::Vector2f(0.f, 0.f), sf::Vector2f(1200.f, 900.f)))) {
+        this->setFillColor(sf::Color(255, 255, 255, 255));
         return true;
     }
     else {
+        this->setFillColor(sf::Color(200, 0, 0, 255));
         return false;
     }
     
@@ -99,9 +116,4 @@ float Tower::getAS() const
 float Tower::getRange() const
 {
     return this->mRange;
-}
-
-sf::CircleShape Tower::getRangeCircle() const
-{
-    return this->mRangeCircle;
 }

@@ -1,14 +1,34 @@
 #include "SideMenu.hpp"
+#include <iostream>
 
-
+//These functions check if player has clicked any of the tower images on the menu, and begins
+//purchase loops if so. Does individually for all towers
 void SideMenu::buyBasicTower()
 {
-	sf::Vector2f mousePosWorld = this->mWindow->mapPixelToCoords(sf::Mouse::getPosition());
-	if (this->mBasicTowerImage.getGlobalBounds().contains(mousePosWorld) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->mTower == nullptr) {
-		glassesAndy* newTower = new glassesAndy(this->getGame(), mousePosWorld);
+	if (this->mBasicTowerImage.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->mTower == nullptr) {
+		glassesAndy* newTower = new glassesAndy(this->getGame(), this->getGame()->getMousePos());
 		this->mTower = newTower;
 	}
 }
+
+void SideMenu::buySniperTower()
+{
+	if (this->mSniperTowerImage.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->mTower == nullptr) {
+		CigarAndy* newTower = new CigarAndy(this->getGame(), this->getGame()->getMousePos());
+		this->mTower = newTower;
+	}
+}
+
+void SideMenu::buyAoeTower()
+{
+	if (this->mAoeTowerImage.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && this->mTower == nullptr) {
+		GoodBoyAndy* newTower = new GoodBoyAndy(this->getGame(), this->getGame()->getMousePos());
+		this->mTower = newTower;
+	}
+}
+
+
+
 
 void SideMenu::draw(sf::RenderWindow& window)
 {
@@ -32,7 +52,7 @@ void SideMenu::draw(sf::RenderWindow& window)
 	window.draw(this->mSniperTowerImage);
 	window.draw(this->mAoeTowerImage);
 
-	//Draw tower being placed
+	//Draw tower being dragged
 	if (this->mTower != nullptr) {
 		this->getGame()->getWindow()->draw(*mTower);
 	}
@@ -47,13 +67,20 @@ void SideMenu::update()
 	this->mPlayerGold->setString(this->mGold);
 
 	
-
+	//Checks if there is currently a tower being placed
 	if (this->mTower != nullptr) {
+		//Checks valid placement for color if invalid
+		this->mTower->isPlacementValid();
+		//Checks if the tower has been placed. If it has, removes pointer from side menu
+		//to exit buying phase
 		if (this->mTower->updateBuying()) {
 			this->mTower = nullptr;
 		}
 	}
+	//If there is not a tower being bought, checks if player clicked to initiate purchase
 	else {
 		this->buyBasicTower();
+		this->buySniperTower();
+		this->buyAoeTower();
 	}
 }

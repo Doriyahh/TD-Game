@@ -9,7 +9,7 @@ public:
 	{
 		this->setPosition(pos);
 		this->mDamage = 3.0f;
-		this->mRange = 0.0f;
+		this->mRange = 2000.0f;
 		this->mAS = 120.0f;
 		this->mShootTimer = 0;
 		this->setRotation(sf::Angle(sf::degrees(90)));
@@ -23,11 +23,11 @@ public:
 		this->mLaser->setOrigin(sf::Vector2f(3, 0));
 		this->mLaser->setPosition(this->getPosition());
 		this->mLaser->setRotation(this->getRotation());
-
-		game->getTowerVector().push_back(this);
 	}
 
 	~CigarAndy();
+
+	bool isEnemyInRange(Enemy*& enemy);
 
 	//Rotates tower toward enemy
 	void target(Enemy*& enemy);

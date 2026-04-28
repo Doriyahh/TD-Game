@@ -35,6 +35,7 @@ int main()
     Game* mainGame = new Game(window);
     SideMenu sideMenu(mainGame, window);
     glassesAndy tower(mainGame, sf::Vector2f(340, 400));
+    mainGame->getTowerVector().push_back(&tower);
     GoodBoyAndy aoe(mainGame, sf::Vector2f(340, 650));
     CigarAndy sniper(mainGame, sf::Vector2f(1100, 500));
     BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, mainGame->getMap().getWaypoints());
@@ -49,7 +50,7 @@ int main()
     mainGame->getEnemyVector().push_back(Healer);
     while (window.isOpen())
     {
-        mainGame->setMousePos(window.mapPixelToCoords(sf::Mouse::getPosition()));
+        mainGame->setMousePos(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
         window.clear();
         while (const std::optional event = window.pollEvent())
         {
