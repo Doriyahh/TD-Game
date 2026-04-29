@@ -47,7 +47,11 @@ Brandon:
 Blake:
 - Created base tower class and base enemy class
 - Contributed to enemy types and behaviors
+- Contributed to End screen Menu behaviors
+- Contributed to tower behavior of priority enemy attacks
+- Contributed to adding png's to the enemies
 
+  
 Josh:
 - Contributed to enemy classes
 - Contributed to enemy types and behaviors
