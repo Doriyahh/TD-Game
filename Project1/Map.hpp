@@ -52,7 +52,7 @@ private:
     void addHouse(float x, float y, sf::Color wallColor = sf::Color(210, 195, 175));
     void addGrassPatch(float x, float y, float w, float h);
     void addClockTower(float x, float y); // x,y = top-left of main building body
-    void generateGrassDetail(); // scatters hundreds of tiny grass slivers
+    void generateGrassDetail(); // use this to create a sf::Texture* mBackground = new sf::Texture(std::filesystem::path("External/Images/Grass.jpg"));
     void addTallTower(float x, float y);
 	void addSchrub(float x, float y);
 };
