@@ -51,6 +51,9 @@ public:
 
         this->mGame = game;
 
+        this->setOutlineThickness(7.0f);
+        this->setOutlineColor(sf::Color(255, 255, 255, 0));
+
         // Set up the range circle - centered on tower, radius = mRange
         mRangeCircle.setRadius(Range);
         // use the circle's own radius as a vector origin (SFML expects a Vector2f)
@@ -58,7 +61,7 @@ public:
         mRangeCircle.setPosition(this->getPosition());
         this->getRangeCircle().setFillColor(sf::Color(70, 70, 70, 130));
         mRangeCircle.setOutlineColor(sf::Color(43, 43, 43, 150)); // slightly visible outline
-        mRangeCircle.setOutlineThickness(3.0f);
+        mRangeCircle.setOutlineThickness(7.0f);
 
         }
 
