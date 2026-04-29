@@ -11,6 +11,8 @@
 #include "HealerEnemy.hpp"
 #include "SideMenu.hpp"
 #include "MainMenu.hpp"
+#include "EndMenu.hpp"
+
 int main()
 {
 
@@ -22,7 +24,7 @@ int main()
     MainMenu mainMenu(window);
     bool gameStart = false;
     SideMenu sideMenu(mainGame, window);
-    
+    EndScreen end(window, mainGame);
 
     //Main menu loop
     while (window.isOpen() && gameStart == false) {
@@ -137,6 +139,11 @@ int main()
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
                 mainGame->setStopSpawn(false);
             }
+        }
+        
+        if (end.GameOver())
+        {
+            end.drawWindow(window);
         }
 
         window.display();
