@@ -22,20 +22,7 @@ int main()
     MainMenu mainMenu(window);
     bool gameStart = false;
     SideMenu sideMenu(mainGame, window);
-    glassesAndy tower(mainGame, sf::Vector2f(340, 400));
-    mainGame->getTowerVector().push_back(&tower);
-    GoodBoyAndy aoe(mainGame, sf::Vector2f(340, 650));
-    CigarAndy sniper(mainGame, sf::Vector2f(1100, 500));
-    BasicEnemy1* newEnemy = new BasicEnemy1(mainGame, mainGame->getMap().getWaypoints());
-    HealerEnemy* Healer = new HealerEnemy(mainGame, mainGame->getMap().getWaypoints());
-    FastEnemy* Fast = new FastEnemy(mainGame, mainGame->getMap().getWaypoints());
-    TankEnemy* Tank = new TankEnemy(mainGame, mainGame->getMap().getWaypoints());
-    BossEnemy* Boss = new BossEnemy(mainGame, mainGame->getMap().getWaypoints());
-    mainGame->getEnemyVector().push_back(newEnemy);
-    mainGame->getEnemyVector().push_back(Fast);
-    mainGame->getEnemyVector().push_back(Tank);
-    mainGame->getEnemyVector().push_back(Boss);
-    mainGame->getEnemyVector().push_back(Healer);
+    
 
     //Main menu loop
     while (window.isOpen() && gameStart == false) {
@@ -98,12 +85,6 @@ int main()
                 //get rid of enemy from map
                 mainGame->removeEnemy(mainGame->getEnemyVector()[i]);
                 i--;
-
-
-                if (Healer != nullptr)
-                {
-                    Healer->HealNearby(mainGame->getEnemyVector());
-                }
             }
         }
 
