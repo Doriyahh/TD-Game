@@ -22,7 +22,7 @@ health means you lose. Upon a successful round win, you will get a cash bonus an
 of now there are 10 rounds. Have fun!
 
 
-DISCLAIMER: AI WAS USED IN THE PROCESS OF CREATING THIS PROJECT. PRIMARY USES WERE FOR DEBUGGING AND LOGIC ASSISTANCE.
+DISCLAIMER: AI WAS USED IN THE PROCESS OF CREATING THIS PROJECT. PRIMARY USES WERE FOR DEBUGGING, TESTS, AND LOGIC ASSISTANCE.
 
 
 
@@ -36,8 +36,13 @@ Brock:
 - Created side menu, main menu, upgrade menus, and associated behaviors
 
 Brandon:
-- Created map graphics and path systems
+- Created map and path graphics
+- Created list of vector "waypoints" (treated as coordinates) in map
+  and path functions/graphics used for enemy travel and tower placement. 
 - Contributed to enemy and tower map-based functions
+- Contributed to tower range functions
+- Created test functions and implimented them in main
+  
 
 Blake:
 - Created base tower class and base enemy class
