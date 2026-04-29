@@ -208,6 +208,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="SideMenu.cpp" />
     <ClCompile Include="SniperTower.cpp" />
+    <ClCompile Include="Test Functions.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +227,7 @@
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Path.hpp" />
     <ClInclude Include="Projectile.hpp" />
+    <ClInclude Include="Test Functions.hpp" />
     <ClInclude Include="Tower.hpp" />
   </ItemGroup>
   <ItemGroup>

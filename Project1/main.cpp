@@ -12,6 +12,7 @@
 #include "SideMenu.hpp"
 #include "MainMenu.hpp"
 #include "EndMenu.hpp"
+#include "Test Functions.hpp"
 
 int main()
 {
@@ -172,6 +173,11 @@ int main()
             break;
         }
     }
+    /*bool testProjectileCheckHit();
+    bool testProjectileSearchEnemy();
+    bool testTowerRangeSetGet();
+    bool testTowerPlacementValidity();
+    bool testEnemyMoveAndReachedEnd();*/
 
     return 0;
 }
