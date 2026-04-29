@@ -6,7 +6,7 @@
 class FastEnemy : public Enemy
 {
 public: FastEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-	Enemy(mainGame,7.f, 7.f, 15.f, 5.f, 5.f, 50.f)
+	Enemy(mainGame,7.f, 7.f, 15.f, 5.f, 5.f, 25.f)
 	{
 	
 	

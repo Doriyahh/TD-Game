@@ -30,7 +30,7 @@ public:
 protected:
 	void move() override
 	{
-		float healthRatio = this->mHealth / 18.f;
+		float healthRatio = this->mHealth / 33.f;
 		this->mCSpeed = 2.f * (1.0f + (1.0f - healthRatio) * 1.5f);
 		Enemy::move();
 	}

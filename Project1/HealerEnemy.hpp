@@ -6,7 +6,7 @@
 class HealerEnemy : public Enemy
 {
 public: HealerEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-	Enemy(mainGame, 7.f, 7.f, 10.f, 2.8f, 2.8f, 50.f)
+	Enemy(mainGame, 7.f, 7.f, 10.f, 2.5f, 2.5f, 30.f)
 {
 
 
