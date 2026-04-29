@@ -39,6 +39,7 @@ public:
 	bool getStopSpawn() { return this->stopSpawn; }
 	void setStopSpawn(bool set) { this->stopSpawn = set; }
 	sf::Text*& getRoundText() { return this->mStartRoundText; }
+	int getRound() { return this->mRound; }
 	sf::RenderWindow*& getWindow() { return this->mWindow; }
 	sf::Vector2f& getMousePos() { return this->mousePos; }
 	void roundHandler();

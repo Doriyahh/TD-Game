@@ -1,20 +1,20 @@
 //Frames until spawn from last enemy, Round, Enemy Type//
-60,1,BasicEnemy
-60,1,BasicEnemy
-60,1,BasicEnemy
-60,1,BasicEnemy
-60,2,BasicEnemy
+40,1,BasicEnemy
+40,1,BasicEnemy
+40,1,BasicEnemy
+40,1,BasicEnemy
+40,2,BasicEnemy
 60,2,FastEnemy
 60,2,FastEnemy
-60,2,BasicEnemy
-60,3,BasicEnemy
+40,2,BasicEnemy
+40,3,BasicEnemy
 60,3,FastEnemy
-60,3,BasicEnemy
+40,3,BasicEnemy
 60,3,FastEnemy
 60,4,TankEnemy
-60,4,BasicEnemy
-60,4,BasicEnemy
-60,4,BasicEnemy
+40,4,BasicEnemy
+40,4,BasicEnemy
+40,4,BasicEnemy
 60,5,TankEnemy
 60,5,BasicEnemy
 60,5,BasicEnemy
@@ -47,3 +47,4 @@
 60,10,TankEnemy
 60,10,HealerEnemy
 60,10,BossEnemy
+60,11,BasicEnemy

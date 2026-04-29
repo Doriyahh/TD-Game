@@ -215,6 +215,7 @@
     <ClInclude Include="BaseEnemy.hpp" />
     <ClInclude Include="BasicTower.hpp" />
     <ClInclude Include="Boss.hpp" />
+    <ClInclude Include="EndMenu.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="FasterEnemy.hpp" />
     <ClInclude Include="HealerEnemy.hpp" />
