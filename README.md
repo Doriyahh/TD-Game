@@ -1,6 +1,8 @@
 Created for Computer Science 122 at WSU Pullman
 Instructor - Andy O'Fallon
 
+Video: https://youtu.be/YRssFylg98g
+
 Team Members - Brock Childers(Doriyahh), Brandon Montgomery(brandonmonty07-cyber), Blake Watson(Pairadise), Josh Torres(WearingKoala64)
 
 Description:
