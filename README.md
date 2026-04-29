@@ -34,6 +34,7 @@ Brock:
 - Created all towers and defined all behaviors for towers
 - Created game object (tracks player values, object list vectors)
 - Created side menu, main menu, upgrade menus, and associated behaviors
+- Adjusted balances for towers and enemies
 
 Brandon:
 - Created map and path graphics
@@ -49,7 +50,8 @@ Blake:
 - Contributed to enemy types and behaviors
 - Contributed to End screen Menu behaviors
 - Contributed to tower behavior of priority enemy attacks
-- Contributed to adding png's to the enemies
+- Contributed to balance changes for the enemies gold and damage
+- Contributed to adding enemies to each of the rounds
 
   
 Josh:
