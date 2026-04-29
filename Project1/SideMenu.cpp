@@ -44,6 +44,7 @@ void SideMenu::draw(sf::RenderWindow& window)
 	window.draw(*this->mBasicInfo);
 	window.draw(*this->mSniperInfo);
 	window.draw(*this->mAoeInfo);
+	window.draw(*this->mRoundDisplay);
 
 	//Image draws
 	window.draw(this->mGoldImage);
@@ -65,6 +66,9 @@ void SideMenu::update()
 	this->mHealth = std::to_string(this->mGame->getHealth());
 	this->mPlayerHealth->setString(this->mHealth);
 	this->mPlayerGold->setString(this->mGold);
+	this->mRound = "Round: ";
+	this->mRound.append(std::to_string(this->getGame()->getRound()));
+	this->mRoundDisplay->setString(this->mRound);
 
 	
 	//Checks if there is currently a tower being placed

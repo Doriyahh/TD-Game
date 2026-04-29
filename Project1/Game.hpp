@@ -38,6 +38,7 @@ public:
 	void incSpawnTimer() { this->mSpawnTimer--; }
 	bool getStopSpawn() { return this->stopSpawn; }
 	void setStopSpawn(bool set) { this->stopSpawn = set; }
+	int& getRound() { return this->mRound; }
 	sf::Text*& getRoundText() { return this->mStartRoundText; }
 	int getRound() { return this->mRound; }
 	sf::RenderWindow*& getWindow() { return this->mWindow; }

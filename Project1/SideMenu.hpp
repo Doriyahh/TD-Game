@@ -35,6 +35,12 @@ public:
 		this->mPlayerGold->setOutlineColor(sf::Color::Black);
 		this->mPlayerGold->setOutlineThickness(7.0f);
 
+		this->mRoundDisplay->setCharacterSize(43);
+		this->mRoundDisplay->setPosition(sf::Vector2f(1250, 160));
+		this->mRoundDisplay->setFillColor(sf::Color::White);
+		this->mRoundDisplay->setOutlineColor(sf::Color::Black);
+		this->mRoundDisplay->setOutlineThickness(7.0f);
+
 		this->mPlayerHealth->setCharacterSize(43);
 		this->mPlayerHealth->setPosition(sf::Vector2f(1350, 95));
 		this->mPlayerHealth->setFillColor(sf::Color::White);
@@ -116,12 +122,14 @@ private:
 	sf::Texture* mMenuBackground = new sf::Texture(std::filesystem::path("External/Images/MenuBackground.png"));
 	//Text elements
 	std::string mHealth;
+	std::string mRound;
 	sf::Text* mPlayerHealth = new sf::Text(this->mFont, mHealth);
 	std::string mGold;
 	sf::Text* mPlayerGold = new sf::Text(this->mFont, mGold);
-	sf::Text* mBasicInfo = new sf::Text(this->mFont, "Glasses Andy\nBasic Type\n150 Gold");
-	sf::Text* mSniperInfo = new sf::Text(this->mFont, "Cigar Andy\nSniper Type\n250 Gold");
-	sf::Text* mAoeInfo = new sf::Text(this->mFont, "Good Guy Andy\nAoE Type\n300 Gold");
+	sf::Text* mBasicInfo = new sf::Text(this->mFont, "Glasses Andy\nBasic Type\n125 Gold");
+	sf::Text* mSniperInfo = new sf::Text(this->mFont, "Cigar Andy\nSniper Type\n350 Gold");
+	sf::Text* mAoeInfo = new sf::Text(this->mFont, "Good Guy Andy\nAoE Type\n225 Gold");
+	sf::Text* mRoundDisplay = new sf::Text(this->mFont, this->mRound);
 	//All visual elements that isnt the menu background and text
 	sf::RectangleShape mGoldImage;
 	sf::RectangleShape mHealthImage;
