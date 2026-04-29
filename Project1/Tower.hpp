@@ -37,7 +37,7 @@ public:
         //not sure if this is how you want the constructor or not
 
          //Change origin to center of tower
-        this->setOrigin(sf::Vector2f((this->getSize().x) / 2.f, (this->getSize().y) / 2.f));
+        this->setOrigin(sf::Vector2f(30, 30));
 
         this->setPosition(pos);
 
@@ -51,21 +51,21 @@ public:
 
         this->mGame = game;
 
-        //this->mGame->getTowerVector().push_back(*this); *PUT IN SUBCLASS CONSTRUCTORS*
-
         // Set up the range circle - centered on tower, radius = mRange
         mRangeCircle.setRadius(Range);
         // use the circle's own radius as a vector origin (SFML expects a Vector2f)
         mRangeCircle.setOrigin(sf::Vector2f(Range, Range));
-        mRangeCircle.setPosition(pos);
-        mRangeCircle.setFillColor(sf::Color(100, 100, 255, 50));   // transparent blue fill
-        mRangeCircle.setOutlineColor(sf::Color(100, 100, 255, 150)); // slightly visible outline
-        mRangeCircle.setOutlineThickness(1.0f);
+        mRangeCircle.setPosition(this->getPosition());
+        this->getRangeCircle().setFillColor(sf::Color(70, 70, 70, 130));
+        mRangeCircle.setOutlineColor(sf::Color(43, 43, 43, 150)); // slightly visible outline
+        mRangeCircle.setOutlineThickness(3.0f);
 
         }
 
     virtual ~Tower() {
     }
+
+    void displayRange();
 
     // Called each frame to handle shooting logic - virtual so subclasses can override
     virtual void update();
@@ -98,6 +98,8 @@ public:
 
     float getPrice() { return this->mPrice; }
 
+    void draw(sf::RenderWindow& window);
+
     Enemy*& getTarget() { return this->mTarget; }
 
     void clearTarget() { this->mTarget = nullptr; }
@@ -120,6 +122,8 @@ protected:
 	float mShootTimer; //timer for shooting, tracks time between shots
 
     float mPrice;
+
+    bool mIsClicked = false;
 
     sf::Texture mTexture;
 

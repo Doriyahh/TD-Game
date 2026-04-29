@@ -1,4 +1,19 @@
 #include "Tower.hpp"
+#include <iostream>
+
+void Tower::displayRange()
+{
+    if (this->getGlobalBounds().contains(this->getGame()->getMousePos())) {
+        if (this->mIsClicked) {
+            this->setOutlineColor(sf::Color(255, 255, 255, 0)); // Hide
+            this->mIsClicked = false;
+        }
+        else {
+            this->setOutlineColor(sf::Color(255, 255, 255, 255)); // Show
+            this->mIsClicked = true;
+        }
+    }           
+}
 
 void Tower::update()
 {
@@ -116,4 +131,12 @@ float Tower::getAS() const
 float Tower::getRange() const
 {
     return this->mRange;
+}
+
+void Tower::draw(sf::RenderWindow& window)
+{
+    window.draw(*this);
+    if (this->mIsClicked == true) {
+        window.draw(this->getRangeCircle());
+    }
 }

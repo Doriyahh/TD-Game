@@ -5,11 +5,11 @@
 class GoodBoyAndy : public Tower {
 public:
 	GoodBoyAndy(Game*& game, const sf::Vector2f& pos)
-		: Tower(game, pos, 1.0f, 90.0f, 100.0f)
+		: Tower(game, pos, 1.0f, 90.0f, 110.0f)
 	{
 		this->setPosition(pos);
 		this->mDamage = 1.0f;
-		this->mRange = 70.0f;
+		this->mRange = 110.0f;
 		this->mAS = 70.0f;
 		this->mShootTimer = 0;
 		this->mRangeCircle.setRadius(this->mRange);

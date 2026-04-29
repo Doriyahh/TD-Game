@@ -6,11 +6,11 @@
 class glassesAndy : public Tower {
 public:
 	glassesAndy(Game*& game, const sf::Vector2f& pos)
-		: Tower(game, pos, 1.0f, 90.0f, 100.0f)
+		: Tower(game, pos, 1.0f, 90.0f, 120.0f)
 	{
 		this->setPosition(pos);
 		this->mDamage = 1.0f;
-		this->mRange = 90.0f;
+		this->mRange = 120.0f;
 		this->mAS = 100.0f;
 		this->mShootTimer = 0;
 		this->setRotation(sf::Angle(sf::degrees(180)));

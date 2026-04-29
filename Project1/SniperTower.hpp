@@ -7,7 +7,7 @@
 class CigarAndy : public Tower {
 public:
 	CigarAndy(Game*& game, const sf::Vector2f& pos)
-		: Tower(game, pos, 3.0f, 120.0f, 0.0f)
+		: Tower(game, pos, 3.0f, 120.0f, 2000.0f)
 	{
 		this->setPosition(pos);
 		this->mDamage = 3.0f;

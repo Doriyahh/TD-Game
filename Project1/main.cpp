@@ -62,6 +62,15 @@ int main()
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
+
+            if (const auto* mousePressed = event->getIf<sf::Event::MouseButtonPressed>()) {
+                if (mousePressed->button == sf::Mouse::Button::Left) {
+                    // Tell the towers to check for selection
+                    for (auto& tower : mainGame->getTowerVector()) {
+                        tower->displayRange();
+                    }
+                }
+            }
         }
 
         std::sort(mainGame->getEnemyVector().begin(),
@@ -122,7 +131,7 @@ int main()
 
         //Draws all towers in game state
         for (int i = 0; i < mainGame->getTowerVector().size(); i++) {
-            window.draw(*mainGame->getTowerVector()[i]);
+            mainGame->getTowerVector()[i]->draw(window);
         }
         //Draws all enemies in game state
         for (int i = 0; i < mainGame->getEnemyVector().size(); i++) {
