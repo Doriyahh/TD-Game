@@ -57,10 +57,64 @@ void SideMenu::draw(sf::RenderWindow& window)
 	if (this->mTower != nullptr) {
 		this->getGame()->getWindow()->draw(*mTower);
 	}
+
+	//Draw upgrade menu
+	if (this->mCheckClicked) {
+		window.draw(this->mUpgradeBackground);
+		window.draw(this->mUpgradeTowerImage1);
+		window.draw(this->mUpgradeTowerImage2);
+		
+
+		switch (this->mClickedTower->getType()) {
+		case TowerType::Basic:
+			if (!this->mClickedTower->getUp1()) {
+				window.draw(*this->mBasicUpInfo1);
+			}
+			else {
+				window.draw(*this->mBought1);
+			}
+			if (!this->mClickedTower->getUp2()) {
+				window.draw(*this->mBasicUpInfo2);
+			}
+			else {
+				window.draw(*this->mBought2);
+			}
+			break;
+		case TowerType::Sniper:
+			if (!this->mClickedTower->getUp1()) {
+				window.draw(*this->mSniperUpInfo1);
+			}
+			else {
+				window.draw(*this->mBought1);
+			}
+			if (!this->mClickedTower->getUp2()) {
+				window.draw(*this->mSniperUpInfo2);
+			}
+			else {
+				window.draw(*this->mBought2);
+			}
+			break;
+		case TowerType::AOE:
+			if (!this->mClickedTower->getUp1()) {
+				window.draw(*this->mAoeUpInfo1);
+			}
+			else {
+				window.draw(*this->mBought1);
+			}
+			if (!this->mClickedTower->getUp2()) {
+				window.draw(*this->mAoeUpInfo2);
+			}
+			else {
+				window.draw(*this->mBought2);
+			}
+			break;
+		}
+	}
 }
 
 void SideMenu::update()
 {
+	this->mCheckClicked = false;
 	//Updates counters and text
 	this->mGold = std::to_string(this->mGame->getGold());
 	this->mHealth = std::to_string(this->mGame->getHealth());
@@ -71,20 +125,61 @@ void SideMenu::update()
 	this->mRoundDisplay->setString(this->mRound);
 
 	
-	//Checks if there is currently a tower being placed
-	if (this->mTower != nullptr) {
-		//Checks valid placement for color if invalid
-		this->mTower->isPlacementValid();
-		//Checks if the tower has been placed. If it has, removes pointer from side menu
-		//to exit buying phase
-		if (this->mTower->updateBuying()) {
-			this->mTower = nullptr;
+	for (int i = 0; i < this->getGame()->getTowerVector().size(); i++) {
+		if (this->getGame()->getTowerVector()[i]->getClickedStatus()) {
+			this->mCheckClicked = true;
+			this->mClickedTower = this->getGame()->getTowerVector()[i];
 		}
 	}
-	//If there is not a tower being bought, checks if player clicked to initiate purchase
+	if (!this->mCheckClicked) {
+		//Checks if there is currently a tower being placed
+		if (this->mTower != nullptr) {
+			//Checks valid placement for color if invalid
+			this->mTower->isPlacementValid();
+			//Checks if the tower has been placed. If it has, removes pointer from side menu
+			//to exit buying phase
+			if (this->mTower->updateBuying()) {
+				this->mTower = nullptr;
+			}
+		}
+		//If there is not a tower being bought, checks if player clicked to initiate purchase
+		else {
+			this->buyBasicTower();
+			this->buySniperTower();
+			this->buyAoeTower();
+		}
+	}
 	else {
-		this->buyBasicTower();
-		this->buySniperTower();
-		this->buyAoeTower();
+		switch (this->mClickedTower->getType()) {
+		case TowerType::Basic:
+			if (this->mUpgradeTowerImage1.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->mClickedTower->getUp1() && this->getGame()->getGold() >= 225) {
+				this->mClickedTower->trueUp1();
+				this->getGame()->setGold(this->getGame()->getGold() - 225);
+			} else if (this->mUpgradeTowerImage2.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->mClickedTower->getUp2() && this->getGame()->getGold() >= 175) {
+				this->mClickedTower->trueUp2();
+				this->getGame()->setGold(this->getGame()->getGold() - 175);
+			}
+			break;
+		case TowerType::Sniper:
+			if (this->mUpgradeTowerImage1.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->mClickedTower->getUp1() && this->getGame()->getGold() >= 500) {
+				this->mClickedTower->trueUp1();
+				this->getGame()->setGold(this->getGame()->getGold() - 500);
+			}
+			else if (this->mUpgradeTowerImage2.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->mClickedTower->getUp2() && this->getGame()->getGold() >= 300) {
+				this->mClickedTower->trueUp2();
+				this->getGame()->setGold(this->getGame()->getGold() - 300);
+			}
+			break;
+		case TowerType::AOE:
+			if (this->mUpgradeTowerImage1.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->mClickedTower->getUp1() && this->getGame()->getGold() >= 225) {
+				this->mClickedTower->trueUp1();
+				this->getGame()->setGold(this->getGame()->getGold() - 225);
+			}
+			else if (this->mUpgradeTowerImage2.getGlobalBounds().contains(this->getGame()->getMousePos()) && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !this->mClickedTower->getUp2() && this->getGame()->getGold() >= 250) {
+				this->mClickedTower->trueUp2();
+				this->getGame()->setGold(this->getGame()->getGold() - 250);
+			}
+			break;
+		}
 	}
 }

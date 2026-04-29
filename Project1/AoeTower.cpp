@@ -30,11 +30,21 @@ void GoodBoyAndy::shootEnemy()
 	float rotationDegrees = 0;
 
 	// Create projectiles on the stack and push it into the game's projectile vector
-	for (int i = 0; i < 8; i++) {
-		Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
-		newProjectile->setLife(20.0f);
-		this->getGame()->getProjectileVector().push_back(newProjectile);
-		rotationDegrees += 45.0f;
+	if (!this->getUp1()) {
+		for (int i = 0; i < 8; i++) {
+			Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
+			newProjectile->setLife(20.0f);
+			this->getGame()->getProjectileVector().push_back(newProjectile);
+			rotationDegrees += 45.0f;
+		}
+	}
+	else {
+		for (int i = 0; i < 16; i++) {
+			Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
+			newProjectile->setLife(20.0f);
+			this->getGame()->getProjectileVector().push_back(newProjectile);
+			rotationDegrees += 22.5f;
+		}
 	}
 }
 
@@ -44,6 +54,9 @@ void GoodBoyAndy::update()
 	if (mShootTimer > 0.0f)
 	{
 		mShootTimer--;
+	}
+	if (this->getUp2() && this->mAS != 40) {
+		this->mAS = 40;
 	}
 
 	//Goes through all enemies in game and checks if theyre in range, shoots at first one it finds in range, if any

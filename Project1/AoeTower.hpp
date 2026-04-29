@@ -28,8 +28,10 @@ public:
 
 	void update() override;
 
+	TowerType getType() override { return this->mType; }
+
 
 
 private:
-
+	TowerType mType = TowerType::AOE;
 };

@@ -38,6 +38,9 @@ public:
 	void shootEnemy(Enemy*& enemy);
 
 	void update() override;
+
+	TowerType getType() override { return this->mType; }
 private:
 	sf::RectangleShape* mLaser = new sf::RectangleShape(sf::Vector2f(6, 1000));
+	TowerType mType = TowerType::Sniper;
 };

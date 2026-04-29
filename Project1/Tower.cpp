@@ -9,6 +9,12 @@ void Tower::displayRange()
             this->mIsClicked = false;
         }
         else {
+            for (int i = 0; i < this->getGame()->getTowerVector().size(); i++) {
+                if (this->getGame()->getTowerVector()[i]->getClickedStatus()) {
+                    this->getGame()->getTowerVector()[i]->setOutlineColor(sf::Color(255, 255, 255, 0));
+                    this->getGame()->getTowerVector()[i]->flipClickedStatus();
+                }
+            }
             this->setOutlineColor(sf::Color(255, 255, 255, 255)); // Show
             this->mIsClicked = true;
         }

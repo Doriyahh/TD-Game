@@ -131,7 +131,8 @@ int main()
         sideMenu.update();
         sideMenu.draw(window);
 
-        if (mainGame->getStopSpawn()) {
+        //Checks if round is over and allows the start of next round if so
+        if (mainGame->getStopSpawn() && mainGame->getEnemyVector().empty()) {
             window.draw(*mainGame->getRoundText());
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
                 mainGame->setStopSpawn(false);

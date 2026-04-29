@@ -65,8 +65,21 @@ void CigarAndy::update()
 	{
 		mShootTimer--;
 	}
-	if (this->mLaser->getFillColor().a > 0) {
-		this->mLaser->setFillColor(sf::Color(255, 0, 0, this->mLaser->getFillColor().a - 3));
+	if (this->getUp2() && this->mAS != 120) {
+		this->mAS = 120;
+	}
+	if (!this->getUp1()) {
+		if (this->mLaser->getFillColor().a > 0) {
+			this->mLaser->setFillColor(sf::Color(255, 0, 0, this->mLaser->getFillColor().a - 3));
+		}
+	}
+	else {
+		if (this->mLaser->getFillColor().a > 0) {
+			this->mLaser->setFillColor(sf::Color(255, 0, 255, this->mLaser->getFillColor().a - 3));
+		}
+		if (this->getDamage() < 4.0f) {
+			this->setDamage(4.0f);
+		}
 	}
 
 	//Goes through all enemies in game and checks if theyre in range, shoots at first one it finds in range, if any
@@ -76,7 +89,7 @@ void CigarAndy::update()
 			target(this->getGame()->getEnemyVector()[0]);
 			shootEnemy(this->getGame()->getEnemyVector()[0]);
 			if (this->getGame()->getEnemyVector()[0]->getArmor() <= 0) {
-				this->getGame()->getEnemyVector()[0]->setHealth(this->getGame()->getEnemyVector()[0]->getHealth() - 3);
+				this->getGame()->getEnemyVector()[0]->setHealth(this->getGame()->getEnemyVector()[0]->getHealth() - this->getDamage());
 			}
 			else {
 				this->getGame()->getEnemyVector()[0]->setArmor(this->getGame()->getEnemyVector()[0]->getArmor() - 1);

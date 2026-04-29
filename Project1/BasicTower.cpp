@@ -63,8 +63,18 @@ void glassesAndy::shootEnemy()
     float rotationDegrees = this->getRotation().asDegrees();
 
     // Create projectile on the stack and push it into the game's projectile vector
-    Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 5.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
-    this->getGame()->getProjectileVector().push_back(newProjectile);
+	if (!this->getUp1()) {
+		Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
+		this->getGame()->getProjectileVector().push_back(newProjectile);
+	}
+	else {
+		Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
+		this->getGame()->getProjectileVector().push_back(newProjectile);
+		newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees - 10, this->getDamage(), 12.0f, 2.0f);
+		this->getGame()->getProjectileVector().push_back(newProjectile);
+		newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees + 10, this->getDamage(), 12.0f, 2.0f);
+		this->getGame()->getProjectileVector().push_back(newProjectile);
+	}
 }
 
 void glassesAndy::update()
@@ -73,6 +83,9 @@ void glassesAndy::update()
 	if (mShootTimer > 0.0f)
 	{
 		mShootTimer--;
+	}
+	if (this->getUp2() && this->mAS != 50) {
+		this->mAS = 50;
 	}
 
 	//Goes through all enemies in game and checks if theyre in range, shoots at first one it finds in range, if any

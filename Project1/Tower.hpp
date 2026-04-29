@@ -28,6 +28,9 @@ A similar thing will be implemented for all temporary objects within the game.
 //Base tower class to be inherited by all other tower classes.
 //Origin is CENTER OF TOWER. Has range in form of circleshape object, also has origin at center.
 
+
+enum class TowerType { None, Basic, Sniper, AOE };
+
 class Tower : public sf::RectangleShape
 {
 public:
@@ -101,6 +104,27 @@ public:
 
     float getPrice() { return this->mPrice; }
 
+    bool getClickedStatus() { return this->mIsClicked; }
+
+    bool getUp1() { return this->mUpgradeOne; }
+
+    bool getUp2() { return this->mUpgradeTwo; }
+
+    void trueUp1() { this->mUpgradeOne = true; }
+
+    void trueUp2() { this->mUpgradeTwo = true; }
+
+    virtual TowerType getType() { return TowerType::None; };
+
+    void flipClickedStatus() {
+        if (this->mIsClicked) {
+            this->mIsClicked = false;
+        }
+        else {
+            this->mIsClicked = true;
+        }
+    }
+
     void draw(sf::RenderWindow& window);
 
     Enemy*& getTarget() { return this->mTarget; }
@@ -137,5 +161,9 @@ protected:
     Game* mGame = nullptr;
 
 	sf::CircleShape mRangeCircle; //circle that shows the range of the tower
+
+    bool mUpgradeOne = false;
+
+    bool mUpgradeTwo = false;
 
 };
