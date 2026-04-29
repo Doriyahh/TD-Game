@@ -14,7 +14,9 @@
 #include "MainMenu.hpp"
 #include "EndMenu.hpp"
 
-
+// AI DISCREPANCY: 2/5 of the following test function declarations and implementations were partially created with AI assistance. 
+// 5/5 Test Functions in Test Functions.cpp comments and descriptions were written and summarized by AI. 
+ 
 
 // 1) testProjectileCheckHit
 //    - verify Projectile::checkHit detects when a projectile and an
@@ -36,7 +38,8 @@ bool testProjectileSearchEnemy();
 //      getRange returns the expected value.
 //    - create a Tower, call setRange with a new value, verify
 //      getRange returns that value.
-bool testTowerRangeSetGet();
+bool testTowerRangeSetGet(); // DISCREPANCY: AI PARTIALLY USED FOR CREATION OF testTowerRangeSetGet()
+							
 
 // 4) testTowerPlacementValidity
 //    - exercise Tower::isPlacementValid to check behavior for a
@@ -52,5 +55,5 @@ bool testTowerPlacementValidity();
 //    - assign a short waypoint list to an Enemy, call update() once or
 //      twice and check whether the current waypoint index advanced or the
 //      enemy reports it reached the end.
-bool testEnemyMoveAndReachedEnd();
-
+bool testEnemyMoveAndReachedEnd(); // DISCREPANCY: AI PARTIALLY USED FOR CREATION OF testEnemyMoveAndReachedEnd()
+								   

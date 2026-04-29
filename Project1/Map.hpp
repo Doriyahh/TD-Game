@@ -20,7 +20,7 @@ private:
     // Base layer
     sf::RectangleShape background;
 
-    // Path and waypoints (unchanged)
+    // Path and waypoints (DO NOT CHANGE/TOUCH) :)
     std::vector<Path> paths;
     std::vector<sf::Vector2f> waypoints;
 
@@ -52,7 +52,6 @@ private:
     void addHouse(float x, float y, sf::Color wallColor = sf::Color(210, 195, 175));
     void addGrassPatch(float x, float y, float w, float h);
     void addClockTower(float x, float y); // x,y = top-left of main building body
-    void generateGrassDetail(); // use this to create a sf::Texture* mBackground = new sf::Texture(std::filesystem::path("External/Images/Grass.jpg"));
     void addTallTower(float x, float y);
 	void addSchrub(float x, float y);
 };
