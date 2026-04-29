@@ -170,6 +170,10 @@ public:
 
 	void buyAoeTower();
 
+	std::string& getRound() { return this->mRound; }
+
+	sf::Text* getRoundDisplay() { return this->mRoundDisplay; }
+
 	sf::Text*& getGoldText() { return this->mPlayerGold; }
 
 	sf::Text*& getHealthText() { return this->mPlayerHealth; }

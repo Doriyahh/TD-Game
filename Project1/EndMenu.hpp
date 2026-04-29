@@ -8,8 +8,10 @@ class EndScreen : public sf::RectangleShape
 public:
 	EndScreen(sf::RenderWindow& window, Game* mainGame) {
 		this->mGame = mainGame;
-		this->setSize(sf::Vector2f(window.getSize().x, window.getSize().y));
-		this->setPosition(sf::Vector2f(0, 0));
+		this->setSize(sf::Vector2f(0, 0));
+		this->setPosition(sf::Vector2f(window.getSize().x / 2.0f, window.getSize().y / 2.0f));
+		this->setRotation(sf::degrees(90));
+		this->setFillColor(sf::Color(255, 255, 255, 0));
 		this->setTexture(this->mBackground);
 
 
@@ -43,8 +45,12 @@ public:
 	}
 	bool isWin()
 	{
-		return this->mGame->getRound() > 10;
-		this->mGame->getEnemyVector().empty();
+		if (this->mGame->getRound() > 10 && this->mGame->getEnemyVector().empty()) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	bool isLost()
@@ -59,21 +65,30 @@ public:
 
 	void drawWindow(sf::RenderWindow& window)
 	{
+		int currentAlpha = this->getFillColor().a;
+
+		if (currentAlpha < 255) {
+			currentAlpha += 1;
+		}
+
+		window.draw(*this);
 		if (isLost())
 		{
 			drawLost(window);
-		
-			//logic for enscreen goes here
 		}
 		else if (isWin()) //check to see the rounds 
 		{
 			drawWon(window);
 		}
+		this->setSize(sf::Vector2f(this->getSize().x + 1, this->getSize().y + 1));
+		this->setOrigin(sf::Vector2f(this->getSize().x / 2.0f, this->getSize().y / 2.0f));
+		this->setPosition(sf::Vector2f(window.getSize().x / 2.0f, window.getSize().y / 2.0f));
+		this->setFillColor(sf::Color(255, 255, 255, currentAlpha));
 	}
 private:
 	Game* mGame = nullptr;
 	sf::Font mFont = sf::Font(std::filesystem::path("External/Fonts/edosz.ttf"));
-	sf::Texture* mBackground = new sf::Texture(std::filesystem::path("External/Images/SkydiveAndy.png")); //make this background the picture you want
+	sf::Texture* mBackground = new sf::Texture(std::filesystem::path("External/Images/CigarAndy.png")); //make this background the picture you want
 
 	sf::Text* mLost = new sf::Text(this->mFont, "You Lost"); 
 	sf::Text* mWon = new sf::Text(this->mFont, "You Won!");

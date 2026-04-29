@@ -120,9 +120,7 @@ void SideMenu::update()
 	this->mHealth = std::to_string(this->mGame->getHealth());
 	this->mPlayerHealth->setString(this->mHealth);
 	this->mPlayerGold->setString(this->mGold);
-	this->mRound = "Round: ";
-	this->mRound.append(std::to_string(this->getGame()->getRound()));
-	this->mRoundDisplay->setString(this->mRound);
+	
 
 	
 	for (int i = 0; i < this->getGame()->getTowerVector().size(); i++) {

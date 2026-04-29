@@ -22,7 +22,8 @@ int main()
     Game* mainGame = new Game(window);
     mainGame->roundHandler();
     MainMenu mainMenu(window);
-    bool gameStart = false;
+    bool gameStart = true;
+    bool checkRoundEnd = false;
     SideMenu sideMenu(mainGame, window);
     EndScreen end(window, mainGame);
 
@@ -135,18 +136,41 @@ int main()
 
         //Checks if round is over and allows the start of next round if so
         if (mainGame->getStopSpawn() && mainGame->getEnemyVector().empty()) {
+            if (checkRoundEnd == false) {
+                mainGame->setGold(mainGame->getGold() + 100);
+                checkRoundEnd = true;
+            }
+            sideMenu.getRound() = "Round: ";
+            sideMenu.getRound().append(std::to_string(sideMenu.getGame()->getRound()));
+            sideMenu.getRoundDisplay()->setString(sideMenu.getRound());
             window.draw(*mainGame->getRoundText());
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
                 mainGame->setStopSpawn(false);
+                checkRoundEnd = false;
             }
         }
         
         if (end.GameOver())
         {
-            end.drawWindow(window);
+            break;
         }
 
         window.display();
+    }
+
+    while (window.isOpen()) {
+        while (const std::optional event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+
+        window.clear();
+        end.drawWindow(window);
+        window.display();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) {
+            break;
+        }
     }
 
     return 0;
