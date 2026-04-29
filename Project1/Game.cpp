@@ -6,6 +6,7 @@
 #include "FasterEnemy.hpp"
 #include "HealerEnemy.hpp"
 #include "Boss.hpp"
+#include "Tank.hpp"
 
 void Game::roundHandler()
 {
@@ -47,6 +48,9 @@ void Game::roundHandler()
         }
         else if (token == "BossEnemy") {
             this->newEnemy = new BossEnemy(pGame, this->getMap().getWaypoints());
+        }
+        else if (token == "TankEnemy") {
+            this->newEnemy = new TankEnemy(pGame, this->getMap().getWaypoints());
         }
     }
     else

@@ -285,10 +285,11 @@ void Map::addClockTower(float x, float y)
 // -----------------------------------------------------------------------
 Map::Map()
 {
-    generateGrassDetail(); // do this FIRST so it draws under everything
+    //generateGrassDetail(); // do this FIRST so it draws under everything
     // ---- Base background ----
     background.setSize(sf::Vector2f(1200.f, 900.f));
-    background.setFillColor(sf::Color(85, 155, 75));
+    sf::Texture* mBackground = new sf::Texture(std::filesystem::path("External/Images/Grass2.jpg"));
+	background.setTexture(mBackground);
 
     // ================================================================
     // DARK GRASS PATCHES
@@ -487,38 +488,12 @@ const std::vector<sf::Vector2f>& Map::getWaypoints() const
     return waypoints;
 }
 
-void Map::generateGrassDetail() // AI Help: Generates hundreds of tiny grass slivers scattered across the map for visual detail
+void Map::generateGrassDetail() // 
 {
-    // Fixed seed = same result every run, no randomness at gameplay time
-    std::mt19937 rng(60);
+    sf::Texture* mBackground = new sf::Texture(std::filesystem::path("External/Images/Grass.jpg"));
 
-    std::uniform_real_distribution<float> xPos(0.f, 1200.f);
-    std::uniform_real_distribution<float> yPos(0.f, 900.f);
-    std::uniform_real_distribution<float> width(4.f, 22.f);
-    std::uniform_real_distribution<float> height(2.f, 8.f);
-    std::uniform_int_distribution<int>    colorVar(0, 120);
-
-    for (int i = 0; i < 10000; i++)
-    {
-        float px = xPos(rng);
-        float py = yPos(rng);
-        float pw = width(rng);
-        float ph = height(rng);
-        int   cv = colorVar(rng);
-
-        sf::RectangleShape sliver(sf::Vector2f(pw, ph));
-
-        // Slight color variation so each sliver looks different
-        sliver.setFillColor(sf::Color(
-            45 + cv / 3,   // red channel (keep low)
-            100 + cv,        // green channel (main variation)
-            40 + cv / 4    // blue channel (keep low)
-        ));
-
-        sliver.setPosition(sf::Vector2f(px, py));
-        darkGrassPatches.push_back(sliver);
-    }
 }
+
 
 void Map::addTallTower(float x, float y)
 {
