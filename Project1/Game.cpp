@@ -49,6 +49,11 @@ void Game::roundHandler()
             this->newEnemy = new BossEnemy(pGame, this->getMap().getWaypoints());
         }
     }
+    else
+    {
+        this->stopSpawn = true;
+        this->newEnemy = nullptr;
+    }
 }
 
 void Game::removeEnemy(Enemy* target) {
