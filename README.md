@@ -47,3 +47,5 @@ Josh:
 - Contributed to enemy classes
 - Contributed to enemy types and behaviors
 - Contributed to enemy pathing system
+- Contributed to End screen Menu behaivors
+- Contributed to tower behavior of attacking enemy in the front
