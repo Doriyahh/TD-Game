@@ -6,7 +6,7 @@
 class HealerEnemy : public Enemy
 {
 public: HealerEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-	Enemy(mainGame, 3.f, 3.f, 3.f, 3.f, 3.f, 5.f)
+	Enemy(mainGame, 7.f, 7.f, 10.f, 2.8f, 2.8f, 50.f)
 {
 
 
@@ -19,7 +19,7 @@ public: HealerEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
 	this->pTexture->loadFromFile("External/Images/Claude.png");
 	this->setTexture(this->pTexture);
 	this->mHealRadius = 50.f;
-	this->mHealAmount = 3.f;
+	this->mHealAmount = 4.f;
 }
 
 	  ~HealerEnemy()

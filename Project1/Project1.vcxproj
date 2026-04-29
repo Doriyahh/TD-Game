@@ -229,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Rounds.csv" />
+    <None Include="TestRounds.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

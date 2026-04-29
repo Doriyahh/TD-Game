@@ -8,7 +8,7 @@ class BossEnemy : public Enemy
 {
 public:
 	BossEnemy(Game*& mainGame, const std::vector<sf::Vector2f>& wp) :
-		Enemy(mainGame,18.f, 18.f, 5.f, 2.f, 2.f, 10.f)
+		Enemy(mainGame,33.f, 33.f, 150.f, 2.f, 2.f, 1000.f)
 	{
 		this->mwaypoints = wp;
 		this->setPosition(sf::Vector2f(0.f, 137.5f));
