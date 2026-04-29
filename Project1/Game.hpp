@@ -40,7 +40,6 @@ public:
 	void setStopSpawn(bool set) { this->stopSpawn = set; }
 	int& getRound() { return this->mRound; }
 	sf::Text*& getRoundText() { return this->mStartRoundText; }
-	int getRound() { return this->mRound; }
 	sf::RenderWindow*& getWindow() { return this->mWindow; }
 	sf::Vector2f& getMousePos() { return this->mousePos; }
 	void roundHandler();
@@ -66,7 +65,7 @@ private:
 	Enemy* newEnemy = nullptr;
 	bool stopSpawn = true;
 	Map mGameMap;
-	int mPlayerGold = 1500; // Central player gold count, will update upon tower purchase or enemy defeat
+	int mPlayerGold = 650; // Central player gold count, will update upon tower purchase or enemy defeat
 	int mPlayerHealth = 150; // Player health count. Reduces if enemy reaches end, game ends if reaches zero
 	sf::RenderWindow* mWindow = nullptr;
 	sf::Vector2f mousePos;
