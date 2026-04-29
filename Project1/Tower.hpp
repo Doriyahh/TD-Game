@@ -150,7 +150,7 @@ protected:
 
     float mPrice;
 
-    bool mIsClicked = false;
+    bool mIsClicked = true;
 
     sf::Texture mTexture;
 

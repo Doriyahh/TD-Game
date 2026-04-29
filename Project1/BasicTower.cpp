@@ -64,15 +64,15 @@ void glassesAndy::shootEnemy()
 
     // Create projectile on the stack and push it into the game's projectile vector
 	if (!this->getUp1()) {
-		Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
+		Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees, this->getDamage(), 12.0f, 1.0f);
 		this->getGame()->getProjectileVector().push_back(newProjectile);
 	}
 	else {
 		Projectile* newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees, this->getDamage(), 12.0f, 2.0f);
 		this->getGame()->getProjectileVector().push_back(newProjectile);
-		newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees - 10, this->getDamage(), 12.0f, 2.0f);
+		newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees - 10, this->getDamage(), 12.0f, 1.0f);
 		this->getGame()->getProjectileVector().push_back(newProjectile);
-		newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees + 10, this->getDamage(), 12.0f, 2.0f);
+		newProjectile = new Projectile(this->getGame(), this->getPosition(), 8.0f, rotationDegrees + 10, this->getDamage(), 12.0f, 1.0f);
 		this->getGame()->getProjectileVector().push_back(newProjectile);
 	}
 }

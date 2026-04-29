@@ -22,8 +22,8 @@ int main()
     Game* mainGame = new Game(window);
     mainGame->roundHandler();
     MainMenu mainMenu(window);
-    bool gameStart = true;
-    bool checkRoundEnd = false;
+    bool gameStart = false;
+    bool checkRoundEnd = true;
     SideMenu sideMenu(mainGame, window);
     EndScreen end(window, mainGame);
 
